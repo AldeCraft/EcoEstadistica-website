@@ -2,6 +2,6 @@
 
 Junto con:
 <strong>
-Dylan Hernández Noguerola.
-Saúl Adrián Toto Santos.
+Dylan Hernández Noguerola</strong> y <strong>
+Saúl Adrián Toto Santos
 </strong>
