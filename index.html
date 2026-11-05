@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta name="google-site-verification" content="ng41qV2QbMsZQ8U6-VHHW2vt8PpduiSKwPe8ftIsh1o" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoEstadística | Gestión de Residuos</title>
+  <meta name="theme-color" content="#123b2a">
+  <meta name="description" content="EcoEstadística: registra, analiza y aprovecha tus residuos con estadísticas claras de reciclaje y composta.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ecoestadistica.alderojasturrent.workers.dev/">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<link rel="shortcut icon" href="ICON.webp" type="image/webp">
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <div class="brand">♻️ <span data-i18n="brand.name">EcoEstadística</span></div>
+      <div class="nav-links">
+        <a href="#registro" data-i18n="nav.register">Registrar residuos</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Activar modo oscuro" aria-pressed="false"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Modo oscuro</span></button>
+        <div class="lang-selector">
+          <button class="lang-btn active" data-lang="es">ES</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+    </nav>
+    <div class="hero-content">
+      <div>
+        <p class="eyebrow" data-i18n="hero.eyebrow">SEPARAR • MEDIR • APROVECHAR</p>
+        <h1 data-i18n="hero.title">Convierte tus residuos en <span>datos útiles</span>.</h1>
+        <p class="hero-text" data-i18n="hero.text">
+          Registra la cantidad de basura que produces, descubre qué porcentaje
+          puede reciclarse o venderse y calcula cuánto material orgánico puede
+          aprovecharse para hacer composta.
+        </p>
+        <a class="button primary" href="#registro" data-i18n="hero.cta">Comenzar registro ↓</a>
+      </div>
+      <div class="hero-card">
+        <div class="leaf">🌱</div>
+        <strong data-i18n="hero.card.title">Tu basura también cuenta.</strong>
+        <p data-i18n="hero.card.text">Con una buena estadística podemos tomar mejores decisiones para reducir, reutilizar y reciclar.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="categories.eyebrow">CLASIFICACIÓN</p>
+        <h2 data-i18n="categories.title">Conoce tus residuos</h2>
+        <p data-i18n="categories.subtitle">Separa los materiales para saber cuánto generas y cómo puedes aprovecharlos.</p>
+      </div>
+      <div class="categories">
+        <article class="category organic">
+          <div class="icon">🥬</div>
+          <h3 data-i18n="cat.organic.title">Basura orgánica</h3>
+          <p data-i18n="cat.organic.desc">Restos de comida, frutas, verduras y hojas. Puede aprovecharse para producir <b>composta</b>.</p>
+        </article>
+        <article class="category pet">
+          <div class="icon">🧴</div>
+          <h3 data-i18n="cat.pet.title">PET</h3>
+          <p data-i18n="cat.pet.desc">Botellas y envases de plástico PET. Puede separarse, reciclarse y, según el precio local, <b>venderse</b>.</p>
+        </article>
+        <article class="category glass">
+          <div class="icon">🫙</div>
+          <h3 data-i18n="cat.glass.title">Vidrio</h3>
+          <p data-i18n="cat.glass.desc">Botellas y frascos de vidrio. Puede reutilizarse o enviarse a centros de reciclaje.</p>
+        </article>
+        <article class="category paper">
+          <div class="icon">📄</div>
+          <h3 data-i18n="cat.paper.title">Papel</h3>
+          <p data-i18n="cat.paper.desc">Hojas, periódicos y cartón limpio. Separarlo facilita su reciclaje.</p>
+        </article>
+        <article class="category plastic">
+          <div class="icon">♻️</div>
+          <h3 data-i18n="cat.plastic.title">Plástico</h3>
+          <p data-i18n="cat.plastic.desc">Envases y otros plásticos. Deben clasificarse correctamente antes de reciclarlos.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="registro" class="section calculator-section">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="calc.eyebrow">CALCULADORA</p>
+        <h2 data-i18n="calc.title">Registra tus residuos</h2>
+        <p data-i18n="calc.subtitle">Introduce los kilogramos recolectados. Los resultados se actualizarán automáticamente.</p>
+      </div>
+
+      <div class="calculator-grid">
+        <form id="wasteForm" class="panel">
+          <div class="field"><label for="organic" data-i18n="field.organic">🥬 Orgánica (kg)</label><input id="organic" type="number" min="0" step="0.1" value="15"></div>
+          <div class="field"><label for="pet" data-i18n="field.pet">🧴 PET (kg)</label><input id="pet" type="number" min="0" step="0.1" value="8"></div>
+          <div class="field"><label for="glass" data-i18n="field.glass">🫙 Vidrio (kg)</label><input id="glass" type="number" min="0" step="0.1" value="5"></div>
+          <div class="field"><label for="paper" data-i18n="field.paper">📄 Papel (kg)</label><input id="paper" type="number" min="0" step="0.1" value="7"></div>
+          <div class="field"><label for="plastic" data-i18n="field.plastic">♻️ Plástico (kg)</label><input id="plastic" type="number" min="0" step="0.1" value="10"></div>
+
+          <div class="price-box">
+            <label for="currency" data-i18n="field.currency">Moneda de cálculo</label>
+            <select id="currency" class="currency-select" aria-label="Moneda de cálculo"><option value="MXN">MXN — Peso mexicano</option><option value="USD">USD — Dólar estadounidense</option></select>
+            <label for="price" data-i18n="field.price">💰 Precio estimado del PET por kg</label>
+            <div class="price-input"><span id="currencySymbol">$</span><input id="price" type="number" min="0" step="0.50" value="12"></div>
+            <small data-i18n="field.price.hint">Elige la moneda e introduce el precio por kilogramo que te ofrece tu centro de reciclaje. Cambiar de moneda no convierte automáticamente el precio.</small>
+          </div>
+          <button class="button primary full" type="submit" data-i18n="btn.update">Actualizar estadísticas</button>
+          <button class="button secondary full" type="button" id="resetBtn" data-i18n="btn.reset">Restablecer ejemplo</button>
+          <button class="button download full" type="button" id="downloadBtn" data-i18n="btn.download">📥 Descargar registro</button>
+        </form>
+
+        <div class="stats-panel">
+          <div class="stat-cards">
+            <div class="stat-card"><span data-i18n="stat.total">Total</span><strong id="total">45 kg</strong><small data-i18n="stat.total.desc">residuos registrados</small></div>
+            <div class="stat-card"><span data-i18n="stat.recyclable">Reciclable</span><strong id="recyclable">30 kg</strong><small data-i18n="stat.recyclable.desc">PET + vidrio + papel + plástico</small></div>
+            <div class="stat-card"><span data-i18n="stat.compost">Composta</span><strong id="compost">15 kg</strong><small data-i18n="stat.compost.desc">materia orgánica</small></div>
+            <div class="stat-card highlight"><span data-i18n="stat.earnings">Venta PET</span><strong id="earnings">$96.00</strong><small data-i18n="stat.earnings.desc">ganancia estimada</small></div>
+          </div>
+          <div class="chart-wrap"><canvas id="wasteChart"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section how-section">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="how.eyebrow">¿CÓMO SACAR UNA ESTADÍSTICA?</p>
+        <h2 data-i18n="how.title">Del residuo al resultado</h2>
+      </div>
+      <div class="steps">
+        <article><b>01</b><h3 data-i18n="step.1.title">Recolecta</h3><p data-i18n="step.1.desc">Durante un periodo determinado, pesa cada tipo de residuo por separado.</p></article>
+        <article><b>02</b><h3 data-i18n="step.2.title">Registra</h3><p data-i18n="step.2.desc">Anota los kilogramos de orgánica, PET, vidrio, papel y plástico.</p></article>
+        <article><b>03</b><h3 data-i18n="step.3.title">Calcula</h3><p data-i18n="step.3.desc">Suma las cantidades para conocer el total y calcula qué porcentaje representa cada material.</p></article>
+        <article><b>04</b><h3 data-i18n="step.4.title">Aprovecha</h3><p data-i18n="step.4.desc">Destina la orgánica a composta y separa los materiales reciclables para su venta o reciclaje.</p></article>
+      </div>
+    </section>
+
+    <section class="section formulas">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="formulas.eyebrow">FÓRMULAS</p>
+        <h2 data-i18n="formulas.title">¿Cómo se calculan los resultados?</h2>
+      </div>
+      <div class="formula-grid">
+        <div class="formula"><h3 data-i18n="formula.total.title">📊 Total de residuos</h3><code data-i18n="formula.total.code">Total = Orgánica + PET + Vidrio + Papel + Plástico</code></div>
+        <div class="formula"><h3 data-i18n="formula.pct.title">📈 Porcentaje</h3><code data-i18n="formula.pct.code">% = (cantidad del material ÷ total) × 100</code></div>
+        <div class="formula"><h3 data-i18n="formula.earn.title">💰 Venta de PET</h3><code data-i18n="formula.earn.code">Ganancia = kg de PET × precio por kg</code></div>
+        <div class="formula"><h3 data-i18n="formula.compost.title">🌱 Composta</h3><code data-i18n="formula.compost.code">Composta disponible ≈ kg de residuos orgánicos</code></div>
+      </div>
+    </section>
+
+    <section class="section example">
+      <div class="example-box">
+        <div>
+          <p class="eyebrow" data-i18n="example.eyebrow">EJEMPLO</p>
+          <h2 data-i18n="example.title">Si recolectas 45 kg...</h2>
+          <p data-i18n="example.text">Con 15 kg de orgánica puedes separar esa cantidad para tu proceso de composta. Los 8 kg de PET pueden venderse si existe un comprador que lo reciba, mientras que vidrio, papel y plástico pueden enviarse a reciclaje.</p>
+        </div>
+        <div class="example-number">45 <span>kg</span><small data-i18n="example.number.desc">total registrado</small></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>♻️ <span data-i18n="brand.name">EcoEstadística</span></strong>
+    <p data-i18n="footer.text">Separar residuos es el primer paso. Medirlos nos ayuda a mejorar.</p>
+    <strong><p>Aldebarán de Jesús Rojas Turrent - Saúl Adrían Toto Santos - Dylan Hernandez Noguerola</p></strong>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
