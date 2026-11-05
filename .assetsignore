@@ -1,0 +1,9 @@
+.git
+node_modules
+src
+db
+wrangler.jsonc
+.assetsignore
+README.md
+LEEME-develop.md
+snippets.html

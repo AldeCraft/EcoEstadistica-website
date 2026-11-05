@@ -1,0 +1,25 @@
+[hidden]{display:none!important}
+.nav-links .auth-box{display:flex;align-items:center;gap:.6rem}
+#userName{font-weight:700;max-width:10ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.map-tools{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:1rem}
+.map-tools .button{width:auto}
+#map{height:420px;border-radius:18px;border:1px solid var(--line);z-index:0}
+#mapMsg,.muted-msg{color:var(--muted)}
+.map-legend{display:flex;gap:1rem;font-size:.9rem;color:var(--muted);margin:.6rem 0}
+.map-legend i{display:inline-block;width:.8rem;height:.8rem;border-radius:50%;margin-right:.35rem}
+.comments-wrap{max-width:760px;margin:0 auto}
+#commentForm textarea,#authDialog input{width:100%;padding:.8rem 1rem;border:1px solid var(--line);border-radius:12px;background:var(--white);color:var(--text);font:inherit;box-sizing:border-box}
+#commentForm textarea{min-height:90px;resize:vertical;margin-bottom:.6rem}
+.comment{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem;margin-top:.8rem;overflow-wrap:anywhere}
+.comment-head{display:flex;justify-content:space-between;gap:1rem;font-size:.9rem}
+.comment-head time{color:var(--muted)}
+.comment p{margin:.5rem 0 0;white-space:pre-wrap}
+.link-btn{background:none;border:0;color:var(--green);cursor:pointer;padding:.4rem 0 0;font:inherit;text-decoration:underline}
+#authDialog{border:1px solid var(--line);border-radius:18px;background:var(--white);color:var(--text);padding:1.5rem;width:min(92vw,380px)}
+#authDialog::backdrop{background:rgba(0,0,0,.55)}
+#authDialog label{display:block;margin:.8rem 0 .3rem;font-weight:600}
+.auth-tabs{display:flex;gap:.5rem}
+.auth-tabs button{flex:1;padding:.6rem;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--text);cursor:pointer;font:inherit}
+.auth-tabs button.active{background:var(--green);border-color:var(--green);color:#fff}
+#authMsg,#commentMsg{color:#d64545;min-height:1.2em;margin:.6rem 0 0;font-size:.9rem}
+.auth-actions{display:flex;gap:.6rem;margin-top:.8rem}

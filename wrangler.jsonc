@@ -1,0 +1,9 @@
+{
+  "name": "eco-estadistica",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": ".", "binding": "ASSETS" },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "eco-estadistica-db", "database_id": "PEGA_AQUI_EL_ID" }
+  ]
+}
