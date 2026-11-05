@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ecoestadistica.alderojasturrent.workers.dev/sitemap.xml
+Sitemap: https://eco-estadistica.alderojasturrent.workers.dev/sitemap.xml
