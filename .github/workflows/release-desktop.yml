@@ -1,0 +1,35 @@
+name: Release desktop
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            script: dist:win
+            files: |
+              desktop/dist/*.exe
+          - os: ubuntu-latest
+            script: dist:linux
+            files: |
+              desktop/dist/*.AppImage
+              desktop/dist/*.tar.gz
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+        working-directory: desktop
+      - run: npm run ${{ matrix.script }}
+        working-directory: desktop
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ matrix.files }}
