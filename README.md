@@ -13,6 +13,8 @@ Es una Página web educativa para registrar y analizar:
 - Papel
 - Plástico
 
+> Otorga la Posibilidad de Visualizar donde vender tu reciclaje.
+
 ## Fórmulas
 ```
 Total = suma de todos los residuos.
@@ -25,17 +27,23 @@ La cantidad de orgánica registrada se muestra como material disponible para el 
 ```
 
 # Carácteristicas
+> \<2.0.0
 - Diseño dinámico (PC, Mobiles)
 - Tema Claro/Oscuro
 - Lenguaje ES/EN
 - Posibilidad de descargar Registro
 - Moneda MXN/USD
 
-# Nota
-La gráfica utiliza Chart.js desde CDN, por lo que necesita conexión a Internet para cargar la librería.
-El resto de la página funciona como archivos HTML/CSS/JS normales.
+> 2.0.0
+- Api wrangler
+- Cuenta + Comentarios
 
-## Cómo abrirla y ejecutarla (.zip)
+# Notas
+- La gráfica utiliza Chart.js desde CDN, por lo que necesita conexión a Internet para cargar la librería. El resto de la página funciona como archivos HTML/CSS/JS normales.
+
+
+
+# Cómo abrirla y ejecutarla (.zip)
 1. Descomprime el proyecto.
 2. Abre `index.html` con Chrome, Edge, Firefox u otro navegador.
 3. Introduce los kilogramos recolectados.
@@ -43,8 +51,6 @@ El resto de la página funciona como archivos HTML/CSS/JS normales.
 
 
 # Creditos
-
-
 - **Aldebarán de Jesús Rojas Turrent.**
 - **Dylan Hernández Noguerola.**
 - **Saúl Adrían Toto Santos.**
