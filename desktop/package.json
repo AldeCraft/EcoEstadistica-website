@@ -1,0 +1,43 @@
+{
+  "name": "ecoestadistica-desktop",
+  "version": "2.0.0",
+  "description": "EcoEstadística: aplicación de escritorio (Windows y Linux) con Electron",
+  "main": "main.js",
+  "author": "Aldebarán de Jesús Rojas Turrent",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/AldeCraft/EcoEstadistica-website",
+  "scripts": {
+    "sync": "node scripts/sync-web.js",
+    "start": "npm run sync && electron .",
+    "dist:win": "npm run sync && electron-builder --win",
+    "dist:linux": "npm run sync && electron-builder --linux",
+    "dist": "npm run sync && electron-builder --win --linux"
+  },
+  "dependencies": {
+    "chart.js": "4.4.0",
+    "leaflet": "1.9.4"
+  },
+  "devDependencies": {
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "com.ecoestadistica.desktop",
+    "productName": "EcoEstadistica",
+    "directories": { "output": "dist", "buildResources": "build" },
+    "files": ["main.js", "web/**/*", "package.json"],
+    "win": {
+      "icon": "build/icon.png",
+      "target": ["nsis", "portable"]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "linux": {
+      "icon": "build/icon.png",
+      "category": "Education",
+      "target": ["AppImage", "tar.gz"]
+    }
+  }
+}
