@@ -22,9 +22,9 @@ Total = suma de todos los residuos.
 Porcentaje = (cantidad del material / total) × 100.
 
 Ganancia estimada = kg de PET × precio por kg.
+```
 
 La cantidad de orgánica registrada se muestra como material disponible para el proceso de composta; la cantidad final de composta obtenida depende del proceso y no es necesariamente igual al peso inicial.
-```
 
 # Carácteristicas
 > \<2.0.0
@@ -40,8 +40,11 @@ La cantidad de orgánica registrada se muestra como material disponible para el 
 
 # Notas
 - La gráfica utiliza Chart.js desde CDN, por lo que necesita conexión a Internet para cargar la librería. El resto de la página funciona como archivos HTML/CSS/JS normales.
+- La Base de datos no se puede usar de manera local sin antes configurar.
 
+> La página está en proceso para indexarse en **Google** y **Bing**.
 
+> La página está en proceso para una aplicación cliente (**Windows**, **Linux** , **Android**).
 
 # Cómo abrirla y ejecutarla (.zip)
 1. Descomprime el proyecto.
@@ -49,6 +52,7 @@ La cantidad de orgánica registrada se muestra como material disponible para el 
 3. Introduce los kilogramos recolectados.
 4. Modifica el precio del PET si quieres estimar una venta diferente.
 
+> La base de datos (El Mapa, Cuenta y comentarios) no se pueden usar en local de manera convencional.
 
 # Creditos
 - **Aldebarán de Jesús Rojas Turrent.**
