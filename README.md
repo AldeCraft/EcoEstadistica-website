@@ -47,6 +47,6 @@ El resto de la página funciona como archivos HTML/CSS/JS normales.
 
 - **Aldebarán de Jesús Rojas Turrent.**
 - **Dylan Hernández Noguerola.**
-- **Saúl Adrián Toto Santos.**
+- **Saúl Adrían Toto Santos.**
 
 

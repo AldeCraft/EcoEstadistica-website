@@ -1,9 +1,22 @@
 {
-  "name": "eco-estadistica",
-  "main": "src/worker.js",
-  "compatibility_date": "2026-10-01",
-  "assets": { "directory": ".", "binding": "ASSETS" },
-  "d1_databases": [
-    { "binding": "DB", "database_name": "eco-estadistica-db", "database_id": "PEGA_AQUI_EL_ID" }
-  ]
+	"name": "eco-estadistica",
+	"main": "src/worker.js",
+	"compatibility_date": "2026-10-01",
+	"assets": {
+		"directory": ".",
+		"binding": "ASSETS"
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "eco-estadistica-db",
+			"database_id": "ffbe0663-cbf6-4b4b-b6a3-5cd0ee20cc13"
+		},
+		{
+			"binding": "eco_estadistica_db",
+			"database_name": "eco-estadistica-db",
+			"database_id": "ffbe0663-cbf6-4b4b-b6a3-5cd0ee20cc13",
+			"remote": true
+		}
+	]
 }
