@@ -26,7 +26,7 @@ Ganancia estimada = kg de PET × precio por kg.
 
 La cantidad de orgánica registrada se muestra como material disponible para el proceso de composta; la cantidad final de composta obtenida depende del proceso y no es necesariamente igual al peso inicial.
 
-# Carácteristicas
+# Carácteristicas + Cambiós
 > \<2.0.0
 - Diseño dinámico (PC, Mobiles)
 - Tema Claro/Oscuro
@@ -38,13 +38,17 @@ La cantidad de orgánica registrada se muestra como material disponible para el 
 - Api wrangler
 - Cuenta + Comentarios
 
+> 2.5.0
+- Aplicación Cliente (**Windows**, **Linux**)
+
 # Notas
 - La gráfica utiliza Chart.js desde CDN, por lo que necesita conexión a Internet para cargar la librería. El resto de la página funciona como archivos HTML/CSS/JS normales.
 - La Base de datos no se puede usar de manera local sin antes configurar.
 
 > La página está en proceso para indexarse en **Google** y **Bing**.
 
-> La página está en proceso para una aplicación cliente (**Windows**, **Linux** , **Android**).
+> La página está en proceso para una aplicación cliente para **Android**
+<!-- > La página está en proceso para una aplicación cliente (**Windows**, **Linux** , **Android**). -->
 
 # Cómo abrirla y ejecutarla (.zip)
 1. Descomprime el proyecto.
