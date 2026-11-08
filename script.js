@@ -82,7 +82,54 @@ const translations = {
 	"nav.volverarriba": "Volver Arriba",
 	"nav.avisodeprivacidad": "Aviso de Privacidad",
 	"nav.documentacion": "Documentación",
-	"nav.presentacion": "Presentación"
+	"nav.presentacion": "Presentación",
+	"auth.message": "Al darle click a Continuar, aceptas que leíste los Aviso de Privacidad.",
+	/* ===== Aviso de privacidad ===== */
+	"priv.back": "← Volver a EcoEstadística",
+	"priv.title": "Aviso de privacidad integral",
+	"priv.updated": "Última actualización: 5 de noviembre de 2026",
+	"priv.s1.h": "1. Quién es el responsable",
+	"priv.s1.1": "EcoEstadística es un proyecto web de educación ambiental. Los responsables del tratamiento de tus datos personales son sus autores: <strong>Aldebarán de Jesús Rojas Turrent, Saúl Adrián Toto Santos y Dylan Hernández Noguerola</strong>.",
+	"priv.s1.2": "Domicilio para oír y recibir notificaciones: <span class=\"todo\">San Andrés Tuxtla, Veracruz.</span>.<br>\n    Correo de contacto para asuntos de privacidad: <span class=\"todo\">alderojasturrent@gmail.com</span>.",
+	"priv.s2.h": "2. Qué datos personales tratamos",
+	"priv.s2.1": "Cuándo",
+	"priv.s2.2": "Datos",
+	"priv.s2.3": "Al crear una cuenta",
+	"priv.s2.4": "Nombre público (el que tú elijas; puede ser un seudónimo), correo electrónico y contraseña. La contraseña no se guarda: solo se guarda un resultado cifrado (hash con sal) que no permite recuperarla.",
+	"priv.s2.5": "Al iniciar sesión",
+	"priv.s2.6": "Una cookie de sesión llamada <code>eco_session</code> (HttpOnly, válida por 30 días o hasta que cierres sesión). En el servidor se guarda únicamente una huella cifrada de ese código y su fecha de vencimiento.",
+	"priv.s2.7": "Al comentar",
+	"priv.s2.8": "El texto de tu comentario, su fecha y hora, y tu nombre público, que se muestra a todas las personas que visiten el sitio.",
+	"priv.s2.9": "Medidas de seguridad",
+	"priv.s2.10": "Para frenar abusos (intentos repetidos de registro, de inicio de sesión o de publicación) se guardan temporalmente tu dirección IP y, en intentos fallidos de inicio de sesión, el correo escrito. Estos registros se eliminan de forma periódica.",
+	"priv.s2.11": "En tu navegador",
+	"priv.s2.12": "Tu preferencia de tema claro/oscuro se guarda en el almacenamiento local de tu navegador (<code>ecoestadistica-theme</code>). No se envía a nuestros servidores.",
+	"priv.s2.13": "No recabamos datos personales sensibles. No usamos publicidad ni herramientas de analítica o seguimiento. Los datos que capturas en el registro y la calculadora de residuos se procesan en tu navegador y no se envían a nuestros servidores.",
+	"priv.s3.h": "3. Para qué usamos tus datos",
+	"priv.s3.1": "<strong>Finalidades necesarias</strong> (sin ellas no podemos darte el servicio):",
+	"priv.s3.2": "Crear y administrar tu cuenta y mantener tu sesión iniciada.",
+	"priv.s3.3": "Publicar tus comentarios y permitir que los borres.",
+	"priv.s3.4": "Proteger el sitio contra abusos y accesos no autorizados.",
+	"priv.s3.5": "<strong>Finalidades adicionales:</strong> no tenemos. No usamos tus datos para mercadotecnia, perfiles ni publicidad.",
+	"priv.s4.h": "4. Mapa y ubicación",
+	"priv.s4.1": "El botón «Usar mi ubicación» pide permiso a tu navegador. Si lo aceptas, tus coordenadas se usan en tu dispositivo para centrar el mapa; nosotros no las recibimos ni las guardamos. Al buscar lugares, tu navegador envía a OpenStreetMap/Overpass el área visible del mapa (no tu ubicación exacta). Puedes usar el mapa sin dar tu ubicación.",
+	"priv.s5.h": "5. Con quién compartimos o a quién intervienen en el tratamiento",
+	"priv.s5.1": "No vendemos ni cedemos tus datos. Para que el sitio funcione intervienen estos proveedores, que reciben datos técnicos como tu IP y tu navegador:",
+	"priv.s5.2": "<strong>Cloudflare</strong> (alojamiento del sitio, servidor y base de datos; sus servidores pueden estar fuera de México).",
+	"priv.s5.3": "<strong>jsDelivr</strong> (entrega de las librerías Chart.js y Leaflet).",
+	"priv.s5.4": "<strong>OpenStreetMap</strong> (imágenes del mapa) y <strong>Overpass API</strong> (búsqueda de centros de acopio).",
+	"priv.s5.5": "El enlace «Buscar también en Google Maps» solo se abre si tú lo pulsas, y a partir de ahí aplican las políticas de Google. También podemos comunicar datos cuando una autoridad competente lo exija conforme a la ley.",
+	"priv.s6.h": "6. Tus derechos (acceso, rectificación, cancelación y oposición)",
+	"priv.s6.1": "Tienes derecho a acceder a tus datos, rectificarlos, cancelarlos u oponerte a su tratamiento, así como a revocar tu consentimiento. Para ejercerlos, escribe al correo de la sección 1 con: tu nombre público y el correo con el que te registraste, el derecho que quieres ejercer y una descripción clara de tu solicitud. Te responderemos en los plazos que establece la ley.",
+	"priv.s6.2": "Si cancelas tu cuenta, se eliminan también tus comentarios. Si consideras que se vulneró tu derecho a la protección de datos, puedes acudir a la Secretaría Anticorrupción y Buen Gobierno, autoridad en la materia.",
+	"priv.s7.h": "7. Conservación",
+	"priv.s7.1": "Conservamos los datos de tu cuenta y tus comentarios mientras mantengas tu cuenta activa o hasta que pidas su eliminación. Los registros de seguridad (sección 2) se borran de forma periódica.",
+	"priv.s8.h": "8. Menores de edad",
+	"priv.s8.1": "Si eres menor de edad, usa las funciones de cuenta y comentarios solo con autorización de tu madre, padre o tutor.",
+	"priv.s9.h": "9. Cambios a este aviso",
+	"priv.s9.1": "Si este aviso cambia, publicaremos la nueva versión en esta misma página y actualizaremos la fecha de arriba.",
+	"priv.s10.h": "10. Consentimiento",
+	"priv.s10.1": "Al crear una cuenta o publicar un comentario manifiestas que leíste este aviso y consientes el tratamiento de tus datos conforme a él."
   },
   en: {
     "brand.name": "EcoStatistics",
@@ -166,7 +213,54 @@ const translations = {
 	"nav.volverarriba": "Back to Top",
 	"nav.avisodeprivacidad": "Privacy Notice",
 	"nav.documentacion": "Documentation (Spanish)",
-	"nav.presentacion": "Presentation (Spanish)"
+	"nav.presentacion": "Presentation (Spanish)",
+	"auth.message": "By clicking Continue, you agree that you have read the Privacy Policy.",
+	/* ===== Aviso de privacidad ===== */
+	"priv.back": "← Back to EcoStatistics",
+	"priv.title": "Comprehensive Privacy Notice",
+	"priv.updated": "Last updated: November 5, 2026",
+	"priv.s1.h": "1. Who is responsible",
+	"priv.s1.1": "EcoStatistics is an environmental education web project. The parties responsible for processing your personal data are its authors: <strong>Aldebarán de Jesús Rojas Turrent, Saúl Adrián Toto Santos and Dylan Hernández Noguerola</strong>.",
+	"priv.s1.2": "Address for notifications: <span class=\"todo\">San Andrés Tuxtla, Veracruz.</span>.<br>\n    Contact email for privacy matters: <span class=\"todo\">alderojasturrent@gmail.com</span>.",
+	"priv.s2.h": "2. What personal data we process",
+	"priv.s2.1": "When",
+	"priv.s2.2": "Data",
+	"priv.s2.3": "When you create an account",
+	"priv.s2.4": "Public name (whatever you choose; it can be a pseudonym), email address and password. Your password is not stored: only an encrypted result (a salted hash) is kept, which cannot be used to recover it.",
+	"priv.s2.5": "When you log in",
+	"priv.s2.6": "A session cookie named <code>eco_session</code> (HttpOnly, valid for 30 days or until you log out). The server stores only an encrypted fingerprint of that code and its expiration date.",
+	"priv.s2.7": "When you comment",
+	"priv.s2.8": "The text of your comment, its date and time, and your public name, which is shown to everyone who visits the site.",
+	"priv.s2.9": "Security measures",
+	"priv.s2.10": "To prevent abuse (repeated attempts to register, log in or post), your IP address is stored temporarily and, for failed login attempts, the email address entered. These records are deleted periodically.",
+	"priv.s2.11": "In your browser",
+	"priv.s2.12": "Your light/dark theme preference is stored in your browser's local storage (<code>ecoestadistica-theme</code>). It is not sent to our servers.",
+	"priv.s2.13": "We do not collect sensitive personal data. We do not use advertising or analytics or tracking tools. The data you enter in the record and the waste calculator is processed in your browser and is not sent to our servers.",
+	"priv.s3.h": "3. What we use your data for",
+	"priv.s3.1": "<strong>Necessary purposes</strong> (without them we cannot provide the service):",
+	"priv.s3.2": "Creating and managing your account and keeping you logged in.",
+	"priv.s3.3": "Publishing your comments and allowing you to delete them.",
+	"priv.s3.4": "Protecting the site against abuse and unauthorized access.",
+	"priv.s3.5": "<strong>Additional purposes:</strong> we have none. We do not use your data for marketing, profiling or advertising.",
+	"priv.s4.h": "4. Map and location",
+	"priv.s4.1": "The “Use my location” button asks your browser for permission. If you accept, your coordinates are used on your device to center the map; we neither receive nor store them. When you search for places, your browser sends the visible area of the map (not your exact location) to OpenStreetMap/Overpass. You can use the map without sharing your location.",
+	"priv.s5.h": "5. Who we share data with or who takes part in the processing",
+	"priv.s5.1": "We do not sell or transfer your data. The following providers take part in making the site work and receive technical data such as your IP address and browser:",
+	"priv.s5.2": "<strong>Cloudflare</strong> (hosting of the site, server and database; its servers may be located outside Mexico).",
+	"priv.s5.3": "<strong>jsDelivr</strong> (delivery of the Chart.js and Leaflet libraries).",
+	"priv.s5.4": "<strong>OpenStreetMap</strong> (map images) and <strong>Overpass API</strong> (search for collection centers).",
+	"priv.s5.5": "The “Also search on Google Maps” link only opens if you click it, and from then on Google's policies apply. We may also disclose data when a competent authority requires it by law.",
+	"priv.s6.h": "6. Your rights (access, rectification, cancellation and opposition)",
+	"priv.s6.1": "You have the right to access your data, rectify it, cancel it or object to its processing, as well as to withdraw your consent. To exercise them, write to the email address in section 1 with: your public name and the email you registered with, the right you wish to exercise, and a clear description of your request. We will reply within the deadlines set by law.",
+	"priv.s6.2": "If you delete your account, your comments are also deleted. If you believe your right to data protection has been violated, you may go to the Secretaría Anticorrupción y Buen Gobierno (Ministry of Anti-Corruption and Good Governance), the authority on the matter.",
+	"priv.s7.h": "7. Retention",
+	"priv.s7.1": "We keep your account data and comments while your account remains active or until you request their deletion. Security records (section 2) are deleted periodically.",
+	"priv.s8.h": "8. Minors",
+	"priv.s8.1": "If you are a minor, use the account and comment features only with the permission of your mother, father or guardian.",
+	"priv.s9.h": "9. Changes to this notice",
+	"priv.s9.1": "If this notice changes, we will publish the new version on this same page and update the date above.",
+	"priv.s10.h": "10. Consent",
+	"priv.s10.1": "By creating an account or posting a comment, you state that you have read this notice and consent to the processing of your data in accordance with it."
   }
 };
 
@@ -176,8 +270,9 @@ let currentLang = "es";
 let currentCurrency = "MXN";
 
 /* ===== Chart ===== */
-const ctx = document.getElementById("wasteChart").getContext("2d");
-let chart = new Chart(ctx, {
+const chartCanvas = document.getElementById("wasteChart");
+const ctx = chartCanvas ? chartCanvas.getContext("2d") : null;
+let chart = (ctx && typeof Chart !== "undefined") ? new Chart(ctx, {
   type: "doughnut",
   data: {
     labels: [
@@ -207,7 +302,7 @@ let chart = new Chart(ctx, {
       }
     }
   }
-});
+}) : null;
 
 /* ===== Helpers ===== */
 function value(id) {
@@ -222,6 +317,7 @@ function money(n) {
 
 /* ===== Update Stats ===== */
 function updateStats() {
+  if (!document.getElementById("wasteForm") || !chart) return;
   const organic = value("organic"), pet = value("pet"), glass = value("glass");
   const paper = value("paper"), plastic = value("plastic"), price = value("price");
   const total = organic + pet + glass + paper + plastic;
@@ -247,7 +343,8 @@ function updateStats() {
 function applyLanguage(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
-  document.title = lang === "es" ? "EcoEstadística | Gestión de Residuos" : "EcoStatistics | Waste Management";
+  const pageTitle = document.body.dataset[lang === "es" ? "titleEs" : "titleEn"];
+  document.title = pageTitle || (lang === "es" ? "EcoEstadística | Gestión de Residuos" : "EcoStatistics | Waste Management");
   const currencySelect = document.getElementById("currency");
   if (currencySelect) {
     currencySelect.options[0].textContent = translations[lang]["currency.mxn"];
@@ -258,7 +355,7 @@ function applyLanguage(lang) {
     const key = el.getAttribute("data-i18n");
     const val = translations[lang][key];
     if (val !== undefined) {
-      if (val.includes("<span>") || val.includes("<b>")) {
+      if (/<(span|b|strong|code|br)[\s>\/]/.test(val)) {
         el.innerHTML = val;
       } else {
         el.textContent = val;
@@ -361,7 +458,7 @@ function downloadRecord() {
 }
 
 /* ===== Event Listeners ===== */
-document.getElementById("wasteForm").addEventListener("submit", e => {
+document.getElementById("wasteForm")?.addEventListener("submit", e => {
   e.preventDefault();
   updateStats();
 });
@@ -370,16 +467,16 @@ document.querySelectorAll("input").forEach(input =>
   input.addEventListener("input", updateStats)
 );
 
-document.getElementById("resetBtn").addEventListener("click", () => {
+document.getElementById("resetBtn")?.addEventListener("click", () => {
   Object.entries(defaults).forEach(([id, val]) => {
     document.getElementById(id).value = val;
   });
   updateStats();
 });
 
-document.getElementById("downloadBtn").addEventListener("click", downloadRecord);
+document.getElementById("downloadBtn")?.addEventListener("click", downloadRecord);
 
-document.getElementById("currency").addEventListener("change", e => {
+document.getElementById("currency")?.addEventListener("change", e => {
   currentCurrency = e.target.value === "USD" ? "USD" : "MXN";
   updatePriceLabel();
   updateStats();

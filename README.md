@@ -8,7 +8,9 @@ Descripción dentro de la web
 # DOCUMENTACIÓN
 > Elaborado como parte de un proyecto académico de Ingeniería en Sistemas Computacionales del Instituto Tecnológico Superior de San Andrés Tuxtla.
 
-📄 [Consultar documentación completa (PDF)](docs/EcoEstadística_documento.pdf)
+📄 [Consultar documentación (PDF)](docs/EcoEstadística_documento.pdf)
+
+📺 [Consultar Presentación (PDF)](docs/EcoEstadística_presentación.pdf)
 
 # ¿Qué hace?
 Es una Página web educativa para registrar y analizar:
@@ -45,15 +47,20 @@ La cantidad de orgánica registrada se muestra como material disponible para el 
 
 > 2.5.0
 - Aplicación Cliente (**Windows**, **Linux**)
+- Se agregó **"Avisos de Privacidad"**
+- Se agregó un apartado para ver los archivos (**"Documentación"**, **"Presentación"**)
 
 # Notas
 - La gráfica utiliza Chart.js desde CDN, por lo que necesita conexión a Internet para cargar la librería. El resto de la página funciona como archivos HTML/CSS/JS normales.
 - La Base de datos no se puede usar de manera local sin antes configurar.
 
+<!--
+
 > La página está en proceso para indexarse en **Google** y **Bing**.
 
 > La página está en proceso para una aplicación cliente para **Android**
-<!-- > La página está en proceso para una aplicación cliente (**Windows**, **Linux** , **Android**). -->
+
+-->
 
 # Cómo abrirla y ejecutarla (.zip)
 1. Descomprime el proyecto.

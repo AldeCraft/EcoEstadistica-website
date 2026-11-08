@@ -22,70 +22,87 @@
     .legal th,.legal td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left;vertical-align:top}
     .legal th{background:var(--white)}
     .legal a{color:var(--green)}
-    .back{display:inline-block;margin-bottom:1.5rem}
+    .back{display:inline-block}
+    .legal .topbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+    .legal .controls{display:flex;align-items:center;gap:.6rem}
+    .legal .theme-toggle{background:var(--white);color:var(--dark);border:1px solid var(--line)}
+    .legal .theme-toggle:hover{background:var(--line)}
+    .legal .lang-selector{background:var(--white);border-color:var(--line)}
+    .legal .lang-btn{color:var(--dark)}
+    .legal .lang-btn.active{background:var(--green);color:#fff}
   </style>
 </head>
-<body>
+<body data-title-es="Aviso de privacidad | EcoEstadística" data-title-en="Privacy Notice | EcoStatistics">
   <main class="legal">
-    <a class="back" href="index.html">← Volver a EcoEstadística</a>
-    <h1>Aviso de privacidad integral</h1>
-    <p class="updated">Última actualización: 5 de noviembre de 2026</p>
+    <div class="topbar">
+      <a class="back" href="index.html" data-i18n="priv.back">← Volver a EcoEstadística</a>
+      <div class="controls">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Activar modo oscuro" aria-pressed="false"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Modo oscuro</span></button>
+        <div class="lang-selector">
+          <button class="lang-btn active" data-lang="es" type="button">ES</button>
+          <button class="lang-btn" data-lang="en" type="button">EN</button>
+        </div>
+      </div>
+    </div>
+    <h1 data-i18n="priv.title">Aviso de privacidad integral</h1>
+    <p class="updated" data-i18n="priv.updated">Última actualización: 5 de noviembre de 2026</p>
 
-    <h2>1. Quién es el responsable</h2>
-    <p>EcoEstadística es un proyecto web de educación ambiental. Los responsables del tratamiento de tus datos personales son sus autores: <strong>Aldebarán de Jesús Rojas Turrent, Saúl Adrián Toto Santos y Dylan Hernández Noguerola</strong>.</p>
-    <p>Domicilio para oír y recibir notificaciones: <span class="todo">San Andrés Tuxtla, Veracruz.</span>.<br>
+    <h2 data-i18n="priv.s1.h">1. Quién es el responsable</h2>
+    <p data-i18n="priv.s1.1">EcoEstadística es un proyecto web de educación ambiental. Los responsables del tratamiento de tus datos personales son sus autores: <strong>Aldebarán de Jesús Rojas Turrent, Saúl Adrián Toto Santos y Dylan Hernández Noguerola</strong>.</p>
+    <p data-i18n="priv.s1.2">Domicilio para oír y recibir notificaciones: <span class="todo">San Andrés Tuxtla, Veracruz.</span>.<br>
     Correo de contacto para asuntos de privacidad: <span class="todo">alderojasturrent@gmail.com</span>.</p>
 
-    <h2>2. Qué datos personales tratamos</h2>
+    <h2 data-i18n="priv.s2.h">2. Qué datos personales tratamos</h2>
     <table>
-      <tr><th>Cuándo</th><th>Datos</th></tr>
-      <tr><td>Al crear una cuenta</td><td>Nombre público (el que tú elijas; puede ser un seudónimo), correo electrónico y contraseña. La contraseña no se guarda: solo se guarda un resultado cifrado (hash con sal) que no permite recuperarla.</td></tr>
-      <tr><td>Al iniciar sesión</td><td>Una cookie de sesión llamada <code>eco_session</code> (HttpOnly, válida por 30 días o hasta que cierres sesión). En el servidor se guarda únicamente una huella cifrada de ese código y su fecha de vencimiento.</td></tr>
-      <tr><td>Al comentar</td><td>El texto de tu comentario, su fecha y hora, y tu nombre público, que se muestra a todas las personas que visiten el sitio.</td></tr>
-      <tr><td>Medidas de seguridad</td><td>Para frenar abusos (intentos repetidos de registro, de inicio de sesión o de publicación) se guardan temporalmente tu dirección IP y, en intentos fallidos de inicio de sesión, el correo escrito. Estos registros se eliminan de forma periódica.</td></tr>
-      <tr><td>En tu navegador</td><td>Tu preferencia de tema claro/oscuro se guarda en el almacenamiento local de tu navegador (<code>ecoestadistica-theme</code>). No se envía a nuestros servidores.</td></tr>
+      <tr><th data-i18n="priv.s2.1">Cuándo</th><th data-i18n="priv.s2.2">Datos</th></tr>
+      <tr><td data-i18n="priv.s2.3">Al crear una cuenta</td><td data-i18n="priv.s2.4">Nombre público (el que tú elijas; puede ser un seudónimo), correo electrónico y contraseña. La contraseña no se guarda: solo se guarda un resultado cifrado (hash con sal) que no permite recuperarla.</td></tr>
+      <tr><td data-i18n="priv.s2.5">Al iniciar sesión</td><td data-i18n="priv.s2.6">Una cookie de sesión llamada <code>eco_session</code> (HttpOnly, válida por 30 días o hasta que cierres sesión). En el servidor se guarda únicamente una huella cifrada de ese código y su fecha de vencimiento.</td></tr>
+      <tr><td data-i18n="priv.s2.7">Al comentar</td><td data-i18n="priv.s2.8">El texto de tu comentario, su fecha y hora, y tu nombre público, que se muestra a todas las personas que visiten el sitio.</td></tr>
+      <tr><td data-i18n="priv.s2.9">Medidas de seguridad</td><td data-i18n="priv.s2.10">Para frenar abusos (intentos repetidos de registro, de inicio de sesión o de publicación) se guardan temporalmente tu dirección IP y, en intentos fallidos de inicio de sesión, el correo escrito. Estos registros se eliminan de forma periódica.</td></tr>
+      <tr><td data-i18n="priv.s2.11">En tu navegador</td><td data-i18n="priv.s2.12">Tu preferencia de tema claro/oscuro se guarda en el almacenamiento local de tu navegador (<code>ecoestadistica-theme</code>). No se envía a nuestros servidores.</td></tr>
     </table>
-    <p>No recabamos datos personales sensibles. No usamos publicidad ni herramientas de analítica o seguimiento. Los datos que capturas en el registro y la calculadora de residuos se procesan en tu navegador y no se envían a nuestros servidores.</p>
+    <p data-i18n="priv.s2.13">No recabamos datos personales sensibles. No usamos publicidad ni herramientas de analítica o seguimiento. Los datos que capturas en el registro y la calculadora de residuos se procesan en tu navegador y no se envían a nuestros servidores.</p>
 
-    <h2>3. Para qué usamos tus datos</h2>
-    <p><strong>Finalidades necesarias</strong> (sin ellas no podemos darte el servicio):</p>
+    <h2 data-i18n="priv.s3.h">3. Para qué usamos tus datos</h2>
+    <p data-i18n="priv.s3.1"><strong>Finalidades necesarias</strong> (sin ellas no podemos darte el servicio):</p>
     <ul>
-      <li>Crear y administrar tu cuenta y mantener tu sesión iniciada.</li>
-      <li>Publicar tus comentarios y permitir que los borres.</li>
-      <li>Proteger el sitio contra abusos y accesos no autorizados.</li>
+      <li data-i18n="priv.s3.2">Crear y administrar tu cuenta y mantener tu sesión iniciada.</li>
+      <li data-i18n="priv.s3.3">Publicar tus comentarios y permitir que los borres.</li>
+      <li data-i18n="priv.s3.4">Proteger el sitio contra abusos y accesos no autorizados.</li>
     </ul>
-    <p><strong>Finalidades adicionales:</strong> no tenemos. No usamos tus datos para mercadotecnia, perfiles ni publicidad.</p>
+    <p data-i18n="priv.s3.5"><strong>Finalidades adicionales:</strong> no tenemos. No usamos tus datos para mercadotecnia, perfiles ni publicidad.</p>
 
-    <h2>4. Mapa y ubicación</h2>
-    <p>El botón «Usar mi ubicación» pide permiso a tu navegador. Si lo aceptas, tus coordenadas se usan en tu dispositivo para centrar el mapa; nosotros no las recibimos ni las guardamos. Al buscar lugares, tu navegador envía a OpenStreetMap/Overpass el área visible del mapa (no tu ubicación exacta). Puedes usar el mapa sin dar tu ubicación.</p>
+    <h2 data-i18n="priv.s4.h">4. Mapa y ubicación</h2>
+    <p data-i18n="priv.s4.1">El botón «Usar mi ubicación» pide permiso a tu navegador. Si lo aceptas, tus coordenadas se usan en tu dispositivo para centrar el mapa; nosotros no las recibimos ni las guardamos. Al buscar lugares, tu navegador envía a OpenStreetMap/Overpass el área visible del mapa (no tu ubicación exacta). Puedes usar el mapa sin dar tu ubicación.</p>
 
-    <h2>5. Con quién compartimos o a quién intervienen en el tratamiento</h2>
-    <p>No vendemos ni cedemos tus datos. Para que el sitio funcione intervienen estos proveedores, que reciben datos técnicos como tu IP y tu navegador:</p>
+    <h2 data-i18n="priv.s5.h">5. Con quién compartimos o a quién intervienen en el tratamiento</h2>
+    <p data-i18n="priv.s5.1">No vendemos ni cedemos tus datos. Para que el sitio funcione intervienen estos proveedores, que reciben datos técnicos como tu IP y tu navegador:</p>
     <ul>
-      <li><strong>Cloudflare</strong> (alojamiento del sitio, servidor y base de datos; sus servidores pueden estar fuera de México).</li>
-      <li><strong>jsDelivr</strong> (entrega de las librerías Chart.js y Leaflet).</li>
-      <li><strong>OpenStreetMap</strong> (imágenes del mapa) y <strong>Overpass API</strong> (búsqueda de centros de acopio).</li>
+      <li data-i18n="priv.s5.2"><strong>Cloudflare</strong> (alojamiento del sitio, servidor y base de datos; sus servidores pueden estar fuera de México).</li>
+      <li data-i18n="priv.s5.3"><strong>jsDelivr</strong> (entrega de las librerías Chart.js y Leaflet).</li>
+      <li data-i18n="priv.s5.4"><strong>OpenStreetMap</strong> (imágenes del mapa) y <strong>Overpass API</strong> (búsqueda de centros de acopio).</li>
     </ul>
-    <p>El enlace «Buscar también en Google Maps» solo se abre si tú lo pulsas, y a partir de ahí aplican las políticas de Google. También podemos comunicar datos cuando una autoridad competente lo exija conforme a la ley.</p>
+    <p data-i18n="priv.s5.5">El enlace «Buscar también en Google Maps» solo se abre si tú lo pulsas, y a partir de ahí aplican las políticas de Google. También podemos comunicar datos cuando una autoridad competente lo exija conforme a la ley.</p>
 
-    <h2>6. Tus derechos (acceso, rectificación, cancelación y oposición)</h2>
-    <p>Tienes derecho a acceder a tus datos, rectificarlos, cancelarlos u oponerte a su tratamiento, así como a revocar tu consentimiento. Para ejercerlos, escribe al correo de la sección 1 con: tu nombre público y el correo con el que te registraste, el derecho que quieres ejercer y una descripción clara de tu solicitud. Te responderemos en los plazos que establece la ley.</p>
-    <p>Si cancelas tu cuenta, se eliminan también tus comentarios. Si consideras que se vulneró tu derecho a la protección de datos, puedes acudir a la Secretaría Anticorrupción y Buen Gobierno, autoridad en la materia.</p>
+    <h2 data-i18n="priv.s6.h">6. Tus derechos (acceso, rectificación, cancelación y oposición)</h2>
+    <p data-i18n="priv.s6.1">Tienes derecho a acceder a tus datos, rectificarlos, cancelarlos u oponerte a su tratamiento, así como a revocar tu consentimiento. Para ejercerlos, escribe al correo de la sección 1 con: tu nombre público y el correo con el que te registraste, el derecho que quieres ejercer y una descripción clara de tu solicitud. Te responderemos en los plazos que establece la ley.</p>
+    <p data-i18n="priv.s6.2">Si cancelas tu cuenta, se eliminan también tus comentarios. Si consideras que se vulneró tu derecho a la protección de datos, puedes acudir a la Secretaría Anticorrupción y Buen Gobierno, autoridad en la materia.</p>
 
-    <h2>7. Conservación</h2>
-    <p>Conservamos los datos de tu cuenta y tus comentarios mientras mantengas tu cuenta activa o hasta que pidas su eliminación. Los registros de seguridad (sección 2) se borran de forma periódica.</p>
+    <h2 data-i18n="priv.s7.h">7. Conservación</h2>
+    <p data-i18n="priv.s7.1">Conservamos los datos de tu cuenta y tus comentarios mientras mantengas tu cuenta activa o hasta que pidas su eliminación. Los registros de seguridad (sección 2) se borran de forma periódica.</p>
 
-    <h2>8. Menores de edad</h2>
-    <p>Si eres menor de edad, usa las funciones de cuenta y comentarios solo con autorización de tu madre, padre o tutor.</p>
+    <h2 data-i18n="priv.s8.h">8. Menores de edad</h2>
+    <p data-i18n="priv.s8.1">Si eres menor de edad, usa las funciones de cuenta y comentarios solo con autorización de tu madre, padre o tutor.</p>
 
-    <h2>9. Cambios a este aviso</h2>
-    <p>Si este aviso cambia, publicaremos la nueva versión en esta misma página y actualizaremos la fecha de arriba.</p>
+    <h2 data-i18n="priv.s9.h">9. Cambios a este aviso</h2>
+    <p data-i18n="priv.s9.1">Si este aviso cambia, publicaremos la nueva versión en esta misma página y actualizaremos la fecha de arriba.</p>
 
-    <h2>10. Consentimiento</h2>
-    <p>Al crear una cuenta o publicar un comentario manifiestas que leíste este aviso y consientes el tratamiento de tus datos conforme a él.</p>
+    <h2 data-i18n="priv.s10.h">10. Consentimiento</h2>
+    <p data-i18n="priv.s10.1">Al crear una cuenta o publicar un comentario manifiestas que leíste este aviso y consientes el tratamiento de tus datos conforme a él.</p>
   </main>
   <script>
     try { if (localStorage.getItem('ecoestadistica-theme') === 'dark') document.body.classList.add('dark-mode'); } catch (_) {}
   </script>
+  <script src="script.js"></script>
 </body>
 </html>

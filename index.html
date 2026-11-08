@@ -146,7 +146,7 @@
   </div>
   <div id="map" role="application" aria-label="Mapa de centros de reciclaje"></div>
   <p id="mapMsg" role="status"></p>
-  <div class="map-legend"><span><i style="background:#16734b"></i>OpenStreetMap</span><span><i style="background:#d97706"></i>EcoEstadística</span></div>
+  <div class="map-legend"><span><i style="background:#16734b"></i>OpenStreetMap</span><span><i style="background:#d97706"></i><label data-i18n="brand.name">EcoEstadística</label></span></div>
 </section>
 
     <section class="section how-section">
@@ -219,7 +219,7 @@
 
 <dialog id="authDialog">
   <div class="auth-tabs">
-    <button type="button" id="authTabLogin" class="active" data-i18n="auth.login">Iniciar sesión</button>
+	<button type="button" id="authTabLogin" class="active" data-i18n="auth.login">Iniciar sesión</button>
     <button type="button" id="authTabReg" data-i18n="auth.register">Crear cuenta</button>
   </div>
   <form id="authForm">
@@ -227,8 +227,11 @@
     <label for="authEmail" data-i18n="auth.email">Correo</label><input id="authEmail" type="email" required autocomplete="email">
     <label for="authPass" data-i18n="auth.password">Contraseña (mínimo 8)</label><input id="authPass" type="password" minlength="8" required>
     <p id="authMsg" role="alert"></p>
-    <div class="auth-actions">
-      <button class="button primary" type="submit" data-i18n="auth.submit">Continuar</button>
+    
+	<a href="aviso-de-privacidad.html"><button class="link-btn" type="button" data-i18n="nav.avisodeprivacidad">Avisos de Privacidad.</button></a>
+	<label data-i18n="auth.message">Al darle click a <strong>Continuar</strong>, aceptas que leíste los <strong>"Aviso de Privacidad"</strong></label>
+	<div class="auth-actions">
+	  <button class="button primary" type="submit" data-i18n="auth.submit">Continuar</button>
       <button class="button secondary" type="button" id="authClose" data-i18n="auth.cancel">Cerrar</button>
     </div>
   </form>
