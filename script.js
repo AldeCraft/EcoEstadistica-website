@@ -80,7 +80,9 @@ const translations = {
     "chart.plastic": "Plástico",
 	"nav.github": "Repositorio de GitHub",
 	"nav.volverarriba": "Volver Arriba",
-	"nav.avisodeprivacidad": "Aviso de Privacidad"
+	"nav.avisodeprivacidad": "Aviso de Privacidad",
+	"nav.documentacion": "Documentación",
+	"nav.presentacion": "Presentación"
   },
   en: {
     "brand.name": "EcoStatistics",
@@ -162,7 +164,9 @@ const translations = {
     "chart.plastic": "Plastic",
 	"nav.github": "GitHub Repository",
 	"nav.volverarriba": "Back to Top",
-	"nav.avisodeprivacidad": "Privacy Notice"
+	"nav.avisodeprivacidad": "Privacy Notice",
+	"nav.documentacion": "Documentation (Spanish)",
+	"nav.presentacion": "Presentation (Spanish)"
   }
 };
 
