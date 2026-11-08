@@ -8,7 +8,7 @@ Descripción dentro de la web
 # DOCUMENTACIÓN
 > Elaborado como parte de un proyecto académico de Ingeniería en Sistemas Computacionales del Instituto Tecnológico Superior de San Andrés Tuxtla.
 
-📄 [Consultar documentación completa (PDF)](docs/EcoEstadística-documento.pdf)
+📄 [Consultar documentación completa (PDF)](docs/EcoEstadística_documento.pdf)
 
 # ¿Qué hace?
 Es una Página web educativa para registrar y analizar:
