@@ -11,11 +11,6 @@ Descripción dentro de la web
 📄 [Consultar documentación (PDF)](docs/EcoEstadística_documento.pdf)
 
 📺 [Consultar Presentación (PDF)](docs/EcoEstadística_presentación.pdf)
-<<<<<<< HEAD
-=======
-
-<!-- 📺 [Consultar Presentación (PPTX)](docs/EcoEstadística_presentación.pptx) -->
->>>>>>> 9768b353128affcbb0cff2ebe5d6dae41c46d208
 
 # ¿Qué hace?
 Es una Página web educativa para registrar y analizar:
