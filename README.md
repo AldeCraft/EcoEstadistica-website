@@ -5,6 +5,11 @@ Descripción meta de la web
 Descripción dentro de la web
 > Registra la cantidad de basura que produces, descubre qué porcentaje puede reciclarse o venderse y calcula cuánto material orgánico puede aprovecharse para hacer composta.
 
+# DOCUMENTACIÓN
+> Elaborado como parte de un proyecto académico de Ingeniería en Sistemas Computacionales del Instituto Tecnológico Superior de San Andrés Tuxtla.
+
+📄 [Consultar documentación completa (PDF)](docs/EcoEstadistica-documentacion.pdf)
+
 # ¿Qué hace?
 Es una Página web educativa para registrar y analizar:
 - Basura orgánica
