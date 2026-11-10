@@ -72,6 +72,9 @@ function buildMenu() {
       label: 'Ayuda',
       submenu: [
         { label: 'Repositorio en GitHub', click: () => shell.openExternal('https://github.com/AldeCraft/EcoEstadistica-website') },
+		{ label: 'Aviso de Privacidad', click: () => shell.openPath('aviso-de-privacidad.html') },
+		{ label: 'Documentación', click: () => shell.openPath('/docs/EcoEstadística-documento.pdf') },
+		{ label: 'Presentación', click: () => shell.openPath('/docs/EcoEstadística-presentación.pdf') },
       ],
     },
   ];
