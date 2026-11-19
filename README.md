@@ -68,7 +68,8 @@ La cantidad de orgánica registrada se muestra como material disponible para el 
 3. Introduce los kilogramos recolectados.
 4. Modifica el precio del PET si quieres estimar una venta diferente.
 
-> La base de datos (El Mapa, Cuenta y comentarios) no se pueden usar en local de manera convencional.
+<!-- > La base de datos (El Mapa, Cuenta y comentarios) no se pueden usar en local de manera convencional. -->
+> La base de datos (Cuenta y comentarios) no se pueden usar en local de manera convencional.
 
 # Creditos
 - **Aldebarán de Jesús Rojas Turrent.**

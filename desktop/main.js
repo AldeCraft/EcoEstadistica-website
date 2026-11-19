@@ -72,9 +72,9 @@ function buildMenu() {
       label: 'Ayuda',
       submenu: [
         { label: 'Repositorio en GitHub', click: () => shell.openExternal('https://github.com/AldeCraft/EcoEstadistica-website') },
-		{ label: 'Aviso de Privacidad', click: () => shell.openPath('aviso-de-privacidad.html') },
-		{ label: 'Documentación', click: () => shell.openPath('/docs/EcoEstadística-documento.pdf') },
-		{ label: 'Presentación', click: () => shell.openPath('/docs/EcoEstadística-presentación.pdf') },
+		{ label: 'Aviso de Privacidad', click: () => const focusedWIndow = BrowserWindow.getFocusedWindow() if (focusedWindow){focusedWindow.loadFile('aviso-de-privacidad.html')}},
+		{ label: 'Documentación', click: () => const focusedWIndow = BrowserWindow.getFocusedWindow() if (focusedWindow){focusedWindow.loadFile('docs/EcoEstadística-documento.pdf')} },
+		{ label: 'Presentación', click: () => const focusedWIndow = BrowserWindow.getFocusedWindow() if (focusedWindow){focusedWindow.loadFile('docs/EcoEstadística-presentación.pdf')}},
       ],
     },
   ];
