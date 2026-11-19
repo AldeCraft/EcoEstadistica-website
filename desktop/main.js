@@ -3,7 +3,7 @@ const fs = require('fs/promises');
 const path = require('path');
 
 // Sitio en línea (cuentas, comentarios y base de datos viven en el Worker de Cloudflare).
-const SITE_URL = 'https://eco-estadistica.alderojasturrent.workers.dev/';
+const SITE_URL = 'https://ecoestadistica.alderojasturrent.workers.dev/';
 const SITE_ORIGIN = new URL(SITE_URL).origin;
 // Copia local (calculadora, gráfica y mapa sin cuentas) para cuando no hay Internet.
 const OFFLINE_URL = 'app://local/index.html';
