@@ -121,6 +121,8 @@
           <button class="button primary full" type="submit" data-i18n="btn.update">Actualizar estadísticas</button>
           <button class="button secondary full" type="button" id="resetBtn" data-i18n="btn.reset">Restablecer ejemplo</button>
           <button class="button download full" type="button" id="downloadBtn" data-i18n="btn.download">📥 Descargar registro</button>
+          <button class="button primary full" type="button" id="saveLogBtn" data-i18n="log.save">💾 Guardar en mi registro</button>
+          <p id="logSaveMsg" role="status"></p>
         </form>
 
         <div class="stats-panel">
@@ -131,6 +133,23 @@
             <div class="stat-card highlight"><span data-i18n="stat.earnings">Venta PET</span><strong id="earnings">$96.00</strong><small data-i18n="stat.earnings.desc">ganancia estimada</small></div>
           </div>
           <div class="chart-wrap"><canvas id="wasteChart"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mis-residuos" class="section">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="log.eyebrow">MI CUENTA</p>
+        <h2 data-i18n="log.title">Mi registro de residuos</h2>
+        <p data-i18n="log.subtitle">Guarda tus mediciones desde la calculadora y consúltalas cuando quieras.</p>
+      </div>
+      <div class="log-wrap">
+        <p id="logLogin"><button class="link-btn" id="logLoginBtn" type="button" data-i18n="log.login">Inicia sesión para ver tu registro.</button></p>
+        <div id="logPanel" hidden>
+          <div id="logSummary"></div>
+          <div class="log-table-wrap"><table class="log-table"><thead id="logHead"></thead><tbody id="logBody"></tbody></table></div>
+          <p id="logMsg" role="status"></p>
+          <button class="button secondary" id="logMore" type="button" hidden data-i18n="log.more">Cargar más</button>
         </div>
       </div>
     </section>

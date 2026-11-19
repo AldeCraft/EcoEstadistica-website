@@ -25,6 +25,12 @@
       'map.zoom': 'Acércate más (zoom 10 o más) y vuelve a buscar.', 'map.none': 'Sin resultados en esta zona. Prueba en Google Maps o amplía la búsqueda.',
       'map.err': 'No se pudo cargar el mapa.', 'map.found': 'lugares encontrados', 'map.fail': 'No se pudo consultar OpenStreetMap. Intenta de nuevo.',
       'map.mat': 'Materiales', 'map.hours': 'Horario',
+      'log.eyebrow': 'MI CUENTA', 'log.title': 'Mi registro de residuos', 'log.subtitle': 'Guarda tus mediciones desde la calculadora y consúltalas cuando quieras.',
+      'log.save': '💾 Guardar en mi registro', 'log.saved': 'Guardado en tu registro.', 'log.login': 'Inicia sesión para ver tu registro.',
+      'log.empty': 'Aún no tienes registros. Usa la calculadora y pulsa “Guardar en mi registro”.', 'log.more': 'Cargar más',
+      'log.date': 'Fecha', 'log.total': 'Total', 'log.earn': 'Venta PET', 'log.records': 'registros', 'log.sumTotal': 'Total acumulado',
+      'log.sumRecy': 'Reciclable', 'log.sumOrg': 'Orgánica',
+      'e.limit_reached': 'Llegaste al límite de registros guardados. Elimina algunos para continuar.',
     },
     en: {
       'nav.map': 'Map', 'nav.comments': 'Comments', 'auth.login': 'Log in', 'auth.logout': 'Log out',
@@ -44,6 +50,12 @@
       'map.zoom': 'Zoom in (level 10 or more) and search again.', 'map.none': 'No results here. Try Google Maps or widen the search.',
       'map.err': 'The map could not be loaded.', 'map.found': 'places found', 'map.fail': 'Could not query OpenStreetMap. Try again.',
       'map.mat': 'Materials', 'map.hours': 'Hours',
+      'log.eyebrow': 'MY ACCOUNT', 'log.title': 'My waste log', 'log.subtitle': 'Save your measurements from the calculator and review them any time.',
+      'log.save': '💾 Save to my log', 'log.saved': 'Saved to your log.', 'log.login': 'Log in to see your log.',
+      'log.empty': 'No records yet. Use the calculator and press “Save to my log”.', 'log.more': 'Load more',
+      'log.date': 'Date', 'log.total': 'Total', 'log.earn': 'PET sales', 'log.records': 'records', 'log.sumTotal': 'Total so far',
+      'log.sumRecy': 'Recyclable', 'log.sumOrg': 'Organic',
+      'e.limit_reached': 'You reached the saved-records limit. Delete some to continue.',
     },
   };
   for (const l of ['es', 'en']) Object.assign(translations[l], T[l]);
@@ -76,9 +88,10 @@
     $('#authTabReg').classList.toggle('active', mode === 'register');
     $('#authPass').autocomplete = mode === 'login' ? 'current-password' : 'new-password';
     $('#commentBody').placeholder = t('ph.body');
+    renderLog();
   }
   async function authToggle() {
-    if (user) { await api('/logout', { method: 'POST', body: {} }); user = null; renderAuth(); loadComments(); }
+    if (user) { await api('/logout', { method: 'POST', body: {} }); user = null; renderAuth(); loadComments(); loadLog(); }
     else { $('#authMsg').textContent = ''; dlg.showModal(); }
   }
   $('#authBtn').addEventListener('click', authToggle);
@@ -92,7 +105,7 @@
     if (mode === 'register') body.name = $('#authName').value;
     const d = await api(mode === 'login' ? '/login' : '/register', { method: 'POST', body });
     if (d.error) { $('#authMsg').textContent = errMsg(d.error); return; }
-    user = d.user; $('#authForm').reset(); dlg.close(); renderAuth(); loadComments();
+    user = d.user; $('#authForm').reset(); dlg.close(); renderAuth(); loadComments(); loadLog();
   });
 
   /* ---------- Comentarios ---------- */
@@ -127,6 +140,61 @@
     if (!d.error) { $('#commentBody').value = ''; loadComments(); }
   });
 
+  /* ---------- Registro de residuos (por usuario) ---------- */
+  let logOldest = null;
+  const MATS = ['organic', 'pet', 'glass', 'paper', 'plastic'];
+  const locale = () => (currentLang === 'es' ? 'es-MX' : 'en-US');
+  const kg = (n) => Number(n).toLocaleString(locale(), { maximumFractionDigits: 2 }) + ' kg';
+  function renderLog() {
+    $('#logLogin').hidden = !!user;
+    $('#logPanel').hidden = !user;
+    const head = $('#logHead');
+    head.replaceChildren();
+    const tr = el('tr');
+    for (const h of [t('log.date'), ...MATS.map((m) => t('chart.' + m)), t('log.total'), t('log.earn'), '']) tr.append(el('th', h));
+    head.append(tr);
+  }
+  async function loadLog(more = false) {
+    renderLog();
+    if (!user) return;
+    const body = $('#logBody');
+    const d = await api('/waste' + (more && logOldest ? '?before=' + logOldest : ''));
+    if (!more) body.replaceChildren();
+    $('#logMore').hidden = true;
+    if (d.error) { $('#logMsg').textContent = errMsg(d.error); return; }
+    $('#logMsg').textContent = !more && !d.items.length ? t('log.empty') : '';
+    if (!more) {
+      const tt = d.totals, total = MATS.reduce((a, m) => a + tt[m], 0);
+      const sum = $('#logSummary'); sum.replaceChildren();
+      if (tt.n) sum.append(el('span', `${tt.n} ${t('log.records')}`), el('span', `${t('log.sumTotal')}: ${kg(total)}`),
+        el('span', `${t('log.sumRecy')}: ${kg(total - tt.organic)}`), el('span', `${t('log.sumOrg')}: ${kg(tt.organic)}`));
+    }
+    for (const r of d.items) {
+      const row = el('tr');
+      row.append(el('td', new Date(r.created_at).toLocaleString(locale(), { dateStyle: 'medium', timeStyle: 'short' })));
+      for (const m of MATS) row.append(el('td', kg(r[m])));
+      row.append(el('td', kg(MATS.reduce((a, m) => a + r[m], 0))));
+      row.append(el('td', (r.pet * r.price).toLocaleString(locale(), { style: 'currency', currency: r.currency })));
+      const cell = el('td'), b = el('button', t('m.del'), 'link-btn'); b.type = 'button';
+      b.addEventListener('click', async () => { await api('/waste/' + r.id, { method: 'DELETE' }); loadLog(); });
+      cell.append(b); row.append(cell);
+      body.append(row);
+      logOldest = r.id;
+    }
+    $('#logMore').hidden = !d.more;
+  }
+  $('#logMore').addEventListener('click', () => loadLog(true));
+  $('#logLoginBtn').addEventListener('click', authToggle);
+  $('#saveLogBtn').addEventListener('click', async () => {
+    if (!user) { $('#authMsg').textContent = ''; dlg.showModal(); return; }
+    const num = (id) => { const n = parseFloat($('#' + id).value); return Number.isFinite(n) && n >= 0 ? n : 0; };
+    const body = { price: num('price'), currency: $('#currency').value === 'USD' ? 'USD' : 'MXN' };
+    for (const m of MATS) body[m] = num(m);
+    const d = await api('/waste', { method: 'POST', body });
+    $('#logSaveMsg').textContent = d.error ? errMsg(d.error) : t('log.saved');
+    if (!d.error) loadLog();
+  });
+
   /* ---------- Mapa ---------- */
   let map, layer, curated = [];
   const popup = (p) => {
@@ -139,7 +207,7 @@
     return d;
   };
   const dot = (lat, lng, color, p) => L.circleMarker([lat, lng], { radius: 9, color: '#fff', weight: 2, fillColor: color, fillOpacity: 0.95 }).bindPopup(popup(p)).addTo(layer);
-  const setMsg = (s) => { $('#mapMsg').textContent = s; };
+  const setMsg = (s) => { const m = $('#mapMsg'); if (m) m.textContent = s; };
 
   function drawCurated() {
     for (const c of curated) {
@@ -169,6 +237,8 @@
     } catch { setMsg(t('map.fail')); }
   }
   function initMap() {
+    // El mapa puede estar oculto/comentado en index.html: sin #map no hay nada que iniciar.
+    if (!$('#map')) return;
     if (!window.L) return setMsg(t('map.err'));
     map = L.map('map').setView([DEFAULT.lat, DEFAULT.lng], DEFAULT.zoom);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
@@ -178,9 +248,9 @@
     $('#mapLocate').addEventListener('click', () => navigator.geolocation?.getCurrentPosition((p) => { map.setView([p.coords.latitude, p.coords.longitude], 13); search(); }, () => {}));
   }
 
-  document.querySelectorAll('.lang-btn').forEach((b) => b.addEventListener('click', () => setTimeout(() => { renderAuth(); loadComments(); }, 0)));
-  initMap();
+  document.querySelectorAll('.lang-btn').forEach((b) => b.addEventListener('click', () => setTimeout(() => { renderAuth(); loadComments(); loadLog(); }, 0)));
   renderAuth();
-  api('/me').then((d) => { user = d.user || null; renderAuth(); });
+  api('/me').then((d) => { user = d.user || null; renderAuth(); loadLog(); });
   loadComments();
+  try { initMap(); } catch (e) { console.error('Mapa:', e); }
 })();

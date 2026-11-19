@@ -14,6 +14,11 @@ for (const f of ['index.html', 'aviso-de-privacidad.html', 'style.css', 'extras.
   fs.copyFileSync(path.join(root, f), path.join(out, f));
 }
 fs.cpSync(path.join(root, 'data'), path.join(out, 'data'), { recursive: true });
+// Aviso de privacidad y PDFs (documentación / presentación) para la versión sin conexión.
+fs.mkdirSync(path.join(out, 'docs'), { recursive: true });
+for (const f of fs.readdirSync(path.join(root, 'docs'))) {
+  if (f.toLowerCase().endsWith('.pdf')) fs.copyFileSync(path.join(root, 'docs', f), path.join(out, 'docs', f));
+}
 
 fs.copyFileSync(path.join(nm, 'chart.js', 'dist', 'chart.umd.js'), path.join(out, 'vendor', 'chart.umd.js'));
 fs.copyFileSync(path.join(nm, 'leaflet', 'dist', 'leaflet.js'), path.join(out, 'vendor', 'leaflet.js'));

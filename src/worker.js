@@ -1,4 +1,4 @@
-// Worker: API de cuentas y comentarios (Cloudflare Workers + D1). El sitio estático se sirve desde ASSETS.
+// Worker: API de cuentas, comentarios y registro de residuos (Cloudflare Workers + D1). El sitio estático se sirve desde ASSETS.
 const enc = new TextEncoder();
 const b64 = (b) => btoa(String.fromCharCode(...new Uint8Array(b)));
 const unb64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
@@ -115,6 +115,46 @@ async function api(req, env, url) {
     await hit(env, 'c:' + me.id);
     await env.DB.prepare('INSERT INTO comments(user_id, body, created_at) VALUES(?,?,?)').bind(me.id, text, Date.now()).run();
     return json({ ok: true }, 201);
+  }
+
+  /* ---------- Registro de residuos (solo el dueño ve y borra sus registros) ---------- */
+  if (p === '/api/waste' && m === 'GET') {
+    const me = await currentUser(req, env);
+    if (!me) return err('auth_required', 401);
+    const before = parseInt(url.searchParams.get('before'), 10) || 9e15;
+    const { results } = await env.DB.prepare(
+      'SELECT id, organic, pet, glass, paper, plastic, currency, price, created_at FROM waste_logs WHERE user_id = ? AND id < ? ORDER BY id DESC LIMIT 21'
+    ).bind(me.id, before).all();
+    const totals = await env.DB.prepare(
+      'SELECT COUNT(*) AS n, COALESCE(SUM(organic),0) AS organic, COALESCE(SUM(pet),0) AS pet, COALESCE(SUM(glass),0) AS glass, COALESCE(SUM(paper),0) AS paper, COALESCE(SUM(plastic),0) AS plastic FROM waste_logs WHERE user_id = ?'
+    ).bind(me.id).first();
+    return json({ items: results.slice(0, 20), more: results.length > 20, totals });
+  }
+
+  if (p === '/api/waste' && m === 'POST') {
+    const me = await currentUser(req, env);
+    if (!me) return err('auth_required', 401);
+    const num = (v) => { const n = Number(v); return Number.isFinite(n) && n >= 0 && n <= 100000 ? Math.round(n * 100) / 100 : null; };
+    const v = ['organic', 'pet', 'glass', 'paper', 'plastic', 'price'].map((k) => num(body[k] ?? 0));
+    const currency = body.currency === 'USD' ? 'USD' : body.currency === 'MXN' ? 'MXN' : null;
+    if (v.includes(null) || !currency || v.slice(0, 5).every((n) => n === 0)) return err('invalid_input');
+    if (await tooMany(env, 'w:' + me.id, 20, 60000)) return err('too_many', 429);
+    await hit(env, 'w:' + me.id);
+    const c = await env.DB.prepare('SELECT COUNT(*) AS n FROM waste_logs WHERE user_id = ?').bind(me.id).first();
+    if (c.n >= 2000) return err('limit_reached', 409);
+    const r = await env.DB.prepare(
+      'INSERT INTO waste_logs(user_id, organic, pet, glass, paper, plastic, currency, price, created_at) VALUES(?,?,?,?,?,?,?,?,?)'
+    ).bind(me.id, v[0], v[1], v[2], v[3], v[4], currency, v[5], Date.now()).run();
+    return json({ ok: true, id: r.meta.last_row_id }, 201);
+  }
+
+  const delW = p.match(/^\/api\/waste\/(\d+)$/);
+  if (delW && m === 'DELETE') {
+    const me = await currentUser(req, env);
+    if (!me) return err('auth_required', 401);
+    const r = await env.DB.prepare('DELETE FROM waste_logs WHERE id = ? AND user_id = ?').bind(delW[1], me.id).run();
+    if (!r.meta.changes) return err('not_found', 404);
+    return json({ ok: true });
   }
 
   const del = p.match(/^\/api\/comments\/(\d+)$/);

@@ -12,7 +12,7 @@ const WEB_DIR = path.join(__dirname, 'web');
 const MIME = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8', '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon',
-  '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml',
+  '.txt': 'text/plain; charset=utf-8', '.pdf': 'application/pdf', '.xml': 'application/xml',
 };
 
 protocol.registerSchemesAsPrivileged([
@@ -41,6 +41,18 @@ function registerOfflineProtocol() {
       return new Response('No encontrado', { status: 404 });
     }
   });
+}
+
+// Abre una página del sitio (en línea o, si no hay conexión, la copia local) en la ventana actual.
+function openPage(rel) {
+  if (!win) return;
+  win.loadURL((offline ? 'app://local/' : SITE_URL) + encodeURI(rel));
+}
+// Los PDF se abren en el visor del sistema (en línea, o desde la copia local si no hay conexión).
+function openDoc(file) {
+  if (!offline) return shell.openExternal(SITE_URL + 'docs/' + encodeURIComponent(file));
+  const local = path.join(WEB_DIR, 'docs', file);
+  return shell.openPath(local).then((err) => { if (err) shell.openExternal(SITE_URL + 'docs/' + encodeURIComponent(file)); });
 }
 
 function goOnline() { offline = false; win.loadURL(SITE_URL); }
@@ -72,9 +84,9 @@ function buildMenu() {
       label: 'Ayuda',
       submenu: [
         { label: 'Repositorio en GitHub', click: () => shell.openExternal('https://github.com/AldeCraft/EcoEstadistica-website') },
-		{ label: 'Aviso de Privacidad', click: () => const focusedWIndow = BrowserWindow.getFocusedWindow() if (focusedWindow){focusedWindow.loadFile('aviso-de-privacidad.html')}},
-		{ label: 'Documentación', click: () => const focusedWIndow = BrowserWindow.getFocusedWindow() if (focusedWindow){focusedWindow.loadFile('docs/EcoEstadística-documento.pdf')} },
-		{ label: 'Presentación', click: () => const focusedWIndow = BrowserWindow.getFocusedWindow() if (focusedWindow){focusedWindow.loadFile('docs/EcoEstadística-presentación.pdf')}},
+        { label: 'Aviso de Privacidad', click: () => openPage('aviso-de-privacidad.html') },
+        { label: 'Documentación', click: () => openDoc('EcoEstadística_documento.pdf') },
+        { label: 'Presentación', click: () => openDoc('EcoEstadística_presentación.pdf') },
       ],
     },
   ];

@@ -15,7 +15,7 @@
 .comment-head time{color:var(--muted)}
 .comment p{margin:.5rem 0 0;white-space:pre-wrap}
 .link-btn{background:none;border:0;color:var(--green);cursor:pointer;padding:.4rem 0 0;font:inherit;text-decoration:underline}
-#authDialog{border:1px solid var(--line);border-radius:18px;background:var(--white);color:var(--text);padding:1.5rem;width:min(92vw,380px)}
+#authDialog{margin:auto;max-height:calc(100vh - 2rem);overflow:auto;border:1px solid var(--line);border-radius:18px;background:var(--white);color:var(--text);padding:1.5rem;width:min(92vw,380px)}
 #authDialog::backdrop{background:rgba(0,0,0,.55)}
 #authDialog label{display:block;margin:.8rem 0 .3rem;font-weight:600}
 .auth-tabs{display:flex;gap:.5rem}
@@ -23,3 +23,15 @@
 .auth-tabs button.active{background:var(--green);border-color:var(--green);color:#fff}
 #authMsg,#commentMsg{color:#d64545;min-height:1.2em;margin:.6rem 0 0;font-size:.9rem}
 .auth-actions{display:flex;gap:.6rem;margin-top:.8rem}
+
+/* Registro de residuos del usuario */
+.log-wrap{max-width:900px;margin:0 auto}
+.log-actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:0 0 1rem}
+.log-actions .button{width:auto}
+#logSaveMsg,#logMsg{color:var(--muted);min-height:1.2em;margin:.4rem 0;font-size:.9rem}
+#logSummary{display:flex;flex-wrap:wrap;gap:1rem;margin:0 0 1rem;font-weight:600}
+.log-table-wrap{overflow-x:auto}
+.log-table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--line);border-radius:14px;font-size:.92rem}
+.log-table th,.log-table td{padding:.6rem .8rem;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+.log-table th:first-child,.log-table td:first-child{text-align:left}
+.log-table th:last-child,.log-table td:last-child{text-align:center}
