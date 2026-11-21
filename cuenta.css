@@ -1,3 +1,4 @@
+
 /* Área privada "Mi cuenta" */
 .acc-main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 4rem}
 .acc-top{background:var(--dark);color:#fff}
@@ -35,3 +36,4 @@ details.danger summary{cursor:pointer;font-weight:700;color:#d64545}
   .acc-card{border:0;padding:0;break-inside:avoid}
   body{background:#fff!important;color:#000!important}
 }
+body.dark-mode .acc-top{background:linear-gradient(135deg,#020302,#0c1c12)}
