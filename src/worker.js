@@ -148,6 +148,50 @@ async function api(req, env, url) {
     return json({ ok: true, id: r.meta.last_row_id }, 201);
   }
 
+  /* ---------- Exportar todo el registro (solo el dueño) ---------- */
+  if (p === '/api/waste/export' && m === 'GET') {
+    const me = await currentUser(req, env);
+    if (!me) return err('auth_required', 401);
+    const { results } = await env.DB.prepare(
+      'SELECT id, organic, pet, glass, paper, plastic, currency, price, created_at FROM waste_logs WHERE user_id = ? ORDER BY id ASC LIMIT 2000'
+    ).bind(me.id).all();
+    return json({ items: results });
+  }
+
+  /* ---------- Cuenta: perfil, cambio de nombre y eliminación ---------- */
+  if (p === '/api/account' && m === 'GET') {
+    const me = await currentUser(req, env);
+    if (!me) return err('auth_required', 401);
+    const a = await env.DB.prepare('SELECT name, email, created_at FROM users WHERE id = ?').bind(me.id).first();
+    return json({ account: a });
+  }
+
+  if (p === '/api/account/name' && m === 'POST') {
+    const me = await currentUser(req, env);
+    if (!me) return err('auth_required', 401);
+    const name = String(body.name || '').trim();
+    if (name.length < 2 || name.length > 30 || /[\u0000-\u001f<>]/.test(name)) return err('invalid_input');
+    await env.DB.prepare('UPDATE users SET name = ? WHERE id = ?').bind(name, me.id).run();
+    return json({ user: { id: me.id, name } });
+  }
+
+  if (p === '/api/account/delete' && m === 'POST') {
+    const me = await currentUser(req, env);
+    if (!me) return err('auth_required', 401);
+    const key = 'del:' + me.id;
+    if (await tooMany(env, key, 5, 900000)) return err('too_many', 429);
+    const u = await env.DB.prepare('SELECT pw FROM users WHERE id = ?').bind(me.id).first();
+    if (!u || !(await checkPw(String(body.password || ''), u.pw))) { await hit(env, key); return err('bad_credentials', 401); }
+    // Se borra explícitamente cada tabla (no se depende solo de ON DELETE CASCADE).
+    await env.DB.batch([
+      env.DB.prepare('DELETE FROM waste_logs WHERE user_id = ?').bind(me.id),
+      env.DB.prepare('DELETE FROM comments WHERE user_id = ?').bind(me.id),
+      env.DB.prepare('DELETE FROM sessions WHERE user_id = ?').bind(me.id),
+      env.DB.prepare('DELETE FROM users WHERE id = ?').bind(me.id),
+    ]);
+    return json({ ok: true }, 200, { 'Set-Cookie': 'eco_session=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0' });
+  }
+
   const delW = p.match(/^\/api\/waste\/(\d+)$/);
   if (delW && m === 'DELETE') {
     const me = await currentUser(req, env);

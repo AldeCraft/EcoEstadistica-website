@@ -50,13 +50,22 @@ La cantidad de orgánica registrada se muestra como material disponible para el 
 - Se agregó **"Avisos de Privacidad"**
 - Se agregó un apartado para ver los archivos (**"Documentación"**, **"Presentación"**)
 
+> 2.5.1
+- se agregó el logo y ubicación de **Tebaev Calería**
+- Correciónes menores
+- Integración de guardado de registros por usuario
+- La página ya está indexada en **Google** y **Bing**.
+
+> 2.6.0
+- Área privada **"Mi cuenta"** (`cuenta.html`): indicadores, gráfica mensual, filtros por fecha y descarga de registros (CSV, JSON, TXT, PDF por impresión)
+- Perfil: cambiar nombre público y eliminar la cuenta con todos sus datos
+- Página de **Gestión ambiental** alineada a ISO 14001 (`gestion-ambiental.html`). *No es una certificación.*
+
 # Notas
 - La gráfica utiliza Chart.js desde CDN, por lo que necesita conexión a Internet para cargar la librería. El resto de la página funciona como archivos HTML/CSS/JS normales.
 - La Base de datos no se puede usar de manera local sin antes configurar.
 
 <!--
-
-> La página está en proceso para indexarse en **Google** y **Bing**.
 
 > La página está en proceso para una aplicación cliente para **Android**
 

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi cuenta | EcoEstadística</title>
+  <meta name="description" content="Área privada de EcoEstadística: consulta, filtra y descarga tus registros de residuos.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#123b2a">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="extras.css">
+  <link rel="stylesheet" href="cuenta.css">
+  <link rel="icon" href="favicon.png">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+</head>
+<body class="account-page">
+  <header class="acc-top">
+    <nav class="nav">
+      <a class="brand" href="index.html">♻️ <span data-i18n="brand">EcoEstadística</span></a>
+      <div class="nav-links">
+        <a href="index.html" data-i18n="nav.home">Inicio</a>
+        <a href="gestion-ambiental.html" data-i18n="nav.env">Gestión ambiental</a>
+        <span class="auth-box"><span id="userName"></span><button class="button secondary" id="logoutBtn" type="button" hidden data-i18n="logout">Salir</button></span>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label" id="themeLabel">Modo oscuro</span></button>
+        <div class="lang-selector">
+          <button class="lang-btn active" data-lang="es" type="button">ES</button>
+          <button class="lang-btn" data-lang="en" type="button">EN</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="acc-main">
+    <!-- Acceso restringido: solo usuarios registrados -->
+    <section id="gate" class="acc-card gate" hidden>
+      <h1 data-i18n="gate.title">Área exclusiva para usuarios registrados</h1>
+      <p data-i18n="gate.text">Inicia sesión para ver, filtrar y descargar los registros guardados en tu cuenta.</p>
+      <form id="loginForm">
+        <label for="lgEmail" data-i18n="email">Correo</label>
+        <input id="lgEmail" type="email" required autocomplete="email">
+        <label for="lgPass" data-i18n="password">Contraseña</label>
+        <input id="lgPass" type="password" required autocomplete="current-password">
+        <p id="lgMsg" role="alert" class="msg err"></p>
+        <button class="button primary full" type="submit" data-i18n="login">Iniciar sesión</button>
+      </form>
+      <p><a href="index.html#registro" data-i18n="gate.signup">¿No tienes cuenta? Créala desde la página principal.</a></p>
+    </section>
+
+    <div id="panel" hidden>
+      <h1 data-i18n="title">Mi cuenta</h1>
+      <p class="muted" id="memberSince"></p>
+      <p id="mainMsg" role="status" class="msg"></p>
+
+      <!-- Indicadores ambientales personales -->
+      <section aria-labelledby="hInd">
+        <h2 id="hInd" data-i18n="ind.title">Mis indicadores ambientales</h2>
+        <div class="kpis" id="kpis"></div>
+      </section>
+
+      <!-- Tendencia mensual -->
+      <section aria-labelledby="hTrend" class="acc-card">
+        <h2 id="hTrend" data-i18n="trend.title">Evolución mensual (kg)</h2>
+        <div class="chart-box"><canvas id="trendChart" role="img" aria-label="Gráfica mensual"></canvas></div>
+        <p id="trendNote" class="muted"></p>
+      </section>
+
+      <!-- Registros -->
+      <section aria-labelledby="hRec" class="acc-card">
+        <h2 id="hRec" data-i18n="rec.title">Mis registros</h2>
+        <div class="filters">
+          <label>
+            <span data-i18n="from">Desde</span>
+            <input type="date" id="fFrom">
+          </label>
+          <label>
+            <span data-i18n="to">Hasta</span>
+            <input type="date" id="fTo">
+          </label>
+          <button class="button secondary" type="button" id="fClear" data-i18n="clear">Quitar filtros</button>
+        </div>
+        <p id="recCount" class="muted" role="status"></p>
+        <div class="log-table-wrap"><table class="log-table"><thead id="recHead"></thead><tbody id="recBody"></tbody></table></div>
+        <div class="pager">
+          <button class="button secondary" type="button" id="pPrev" data-i18n="prev">← Anterior</button>
+          <span id="pInfo"></span>
+          <button class="button secondary" type="button" id="pNext" data-i18n="next">Siguiente →</button>
+        </div>
+
+        <h3 data-i18n="dl.title">Descargar</h3>
+        <p class="muted" data-i18n="dl.hint">Se descargan los registros que coinciden con el filtro actual.</p>
+        <div class="dl-actions">
+          <button class="button primary" type="button" id="dlCsv">CSV</button>
+          <button class="button primary" type="button" id="dlJson">JSON</button>
+          <button class="button primary" type="button" id="dlTxt" data-i18n="dl.txt">Informe (TXT)</button>
+          <button class="button secondary" type="button" id="dlPrint" data-i18n="dl.print">Imprimir / PDF</button>
+        </div>
+      </section>
+
+      <!-- Perfil y privacidad -->
+      <section aria-labelledby="hProf" class="acc-card">
+        <h2 id="hProf" data-i18n="prof.title">Perfil y privacidad</h2>
+        <p><strong data-i18n="email">Correo</strong>: <span id="profEmail"></span></p>
+        <form id="nameForm" class="inline-form">
+          <label for="profName" data-i18n="name">Nombre público</label>
+          <input id="profName" maxlength="30" required>
+          <button class="button secondary" type="submit" data-i18n="save">Guardar</button>
+        </form>
+        <p id="nameMsg" role="status" class="msg"></p>
+
+        <details class="danger">
+          <summary data-i18n="del.title">Eliminar mi cuenta</summary>
+          <p data-i18n="del.text">Se borrarán de forma permanente tu cuenta, tus registros de residuos y tus comentarios. Descarga tus datos antes si los necesitas. Esta acción no se puede deshacer.</p>
+          <form id="delForm">
+            <label for="delPass" data-i18n="del.pass">Escribe tu contraseña para confirmar</label>
+            <input id="delPass" type="password" required autocomplete="current-password">
+            <p id="delMsg" role="alert" class="msg err"></p>
+            <button class="button danger-btn" type="submit" data-i18n="del.btn">Eliminar definitivamente</button>
+          </form>
+        </details>
+        <p><a href="aviso-de-privacidad.html" data-i18n="priv">Aviso de privacidad</a></p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <strong>♻️ <span data-i18n="brand">EcoEstadística</span></strong>
+    <p data-i18n="footer">Separar residuos es el primer paso. Medirlos nos ayuda a mejorar.</p>
+  </footer>
+  <script src="cuenta.js"></script>
+</body>
+</html>

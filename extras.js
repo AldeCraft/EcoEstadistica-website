@@ -8,7 +8,7 @@
 
   const T = {
     es: {
-      'nav.map': 'Mapa', 'nav.comments': 'Comentarios', 'auth.login': 'Iniciar sesión', 'auth.logout': 'Salir',
+      'nav.map': 'Mapa', 'nav.comments': 'Comentarios', 'nav.account': 'Mi cuenta', 'nav.env': 'Gestión ambiental', 'log.manage': 'Ver todo, filtrar y descargar →', 'auth.login': 'Iniciar sesión', 'auth.logout': 'Salir',
       'auth.register': 'Crear cuenta', 'auth.name': 'Nombre público', 'auth.email': 'Correo', 'auth.password': 'Contraseña (mínimo 8)',
       'auth.submit': 'Continuar', 'auth.cancel': 'Cerrar',
       'map.eyebrow': 'MAPA', 'map.title': 'Dónde vender tu reciclaje',
@@ -33,7 +33,7 @@
       'e.limit_reached': 'Llegaste al límite de registros guardados. Elimina algunos para continuar.',
     },
     en: {
-      'nav.map': 'Map', 'nav.comments': 'Comments', 'auth.login': 'Log in', 'auth.logout': 'Log out',
+      'nav.map': 'Map', 'nav.comments': 'Comments', 'nav.account': 'My account', 'nav.env': 'Environmental management', 'log.manage': 'View all, filter and download →', 'auth.login': 'Log in', 'auth.logout': 'Log out',
       'auth.register': 'Sign up', 'auth.name': 'Public name', 'auth.email': 'Email', 'auth.password': 'Password (min. 8)',
       'auth.submit': 'Continue', 'auth.cancel': 'Close',
       'map.eyebrow': 'MAP', 'map.title': 'Where to sell your recyclables',
@@ -81,6 +81,7 @@
     $('#authBtn').textContent = user ? t('auth.logout') : t('auth.login');
     $('#userName').textContent = user ? user.name : '';
     $('#commentForm').hidden = !user;
+    $('#accountLink').hidden = !user;
     $('#commentLogin').hidden = !!user;
     $('#authNameField').hidden = mode !== 'register';
     $('#authName').required = mode === 'register';

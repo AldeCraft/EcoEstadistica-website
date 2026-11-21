@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión ambiental (alineada a ISO 14001) | EcoEstadística</title>
+  <meta name="description" content="Política ambiental, objetivos, indicadores y mejora continua de EcoEstadística, alineados a los principios de ISO 14001:2015.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ecoestadistica.alderojasturrent.workers.dev/gestion-ambiental.html">
+  <meta name="theme-color" content="#123b2a">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.png">
+  <style>
+    .legal{max-width:820px;margin:0 auto;padding:48px 24px 72px}
+    .legal h1{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--dark);line-height:1.15;margin-bottom:.4rem}
+    .legal h2{font-size:1.3rem;color:var(--dark);margin:2.2rem 0 .6rem}
+    .legal p,.legal li{margin:.5rem 0}
+    .legal ul{padding-left:1.3rem}
+    .legal .updated{color:var(--muted);font-size:.95rem}
+    .legal a{color:var(--green)}
+    .legal table{width:100%;border-collapse:collapse;margin:.8rem 0;font-size:.95rem;display:block;overflow-x:auto}
+    .legal th,.legal td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left;vertical-align:top}
+    .legal th{background:var(--white)}
+    .notice{border-left:4px solid var(--green);background:var(--white);padding:.8rem 1rem;border-radius:8px;margin:1rem 0}
+    .lang-switch{display:flex;gap:.5rem;margin-bottom:1rem}
+    .lang-switch button{padding:.35rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--white);color:var(--text);cursor:pointer;font:inherit}
+    .lang-switch button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
+    .lang-switch button:focus-visible,.legal a:focus-visible{outline:3px solid var(--green2);outline-offset:2px}
+  </style>
+</head>
+<body>
+<main class="legal">
+  <p><a class="back" href="index.html">← <span class="t-es">Volver al inicio</span><span class="t-en" hidden>Back to home</span></a></p>
+  <div class="lang-switch" role="group" aria-label="Idioma / Language">
+    <button type="button" data-l="es" aria-pressed="true">ES</button>
+    <button type="button" data-l="en" aria-pressed="false">EN</button>
+  </div>
+
+  <!-- ======================= ESPAÑOL ======================= -->
+  <div lang="es" id="c-es">
+    <h1>Gestión ambiental de EcoEstadística</h1>
+    <p class="updated">Alineada a los principios de ISO 14001:2015 · Revisión: 21 de noviembre de 2026</p>
+
+    <div class="notice">
+      <strong>Aclaración importante.</strong> ISO 14001 es una norma para el <em>sistema de gestión ambiental de una organización</em> y solo puede certificarla un organismo de certificación acreditado (en México, acreditado por la ema). <strong>EcoEstadística no cuenta con certificación ISO 14001.</strong> Esta página documenta cómo el proyecto aplica sus requisitos de manera voluntaria y educativa, y sirve como base si en el futuro se busca certificar.
+    </div>
+
+    <h2>1. Contexto y alcance (cláusulas 4.1 – 4.3)</h2>
+    <p>EcoEstadística es un proyecto académico de Ingeniería en Sistemas Computacionales del Instituto Tecnológico Superior de San Andrés Tuxtla. Su alcance es el sitio web, la aplicación de escritorio y la base de datos de cuentas y registros de residuos, así como la actividad educativa que promueven. Las partes interesadas son las personas usuarias, el instituto, el centro Tebaev Caleria y las autoridades ambientales y de protección de datos aplicables.</p>
+
+    <h2>2. Política ambiental (cláusula 5.2)</h2>
+    <ul>
+      <li>Fomentar la separación, el reciclaje y la composta de residuos mediante información clara y medible.</li>
+      <li>Cumplir la legislación ambiental aplicable y los demás requisitos que el proyecto suscriba.</li>
+      <li>Reducir el impacto ambiental propio del sitio: recursos ligeros, sin datos innecesarios y sin servicios que no aporten al objetivo.</li>
+      <li>Mejorar de forma continua el desempeño ambiental y la calidad de los datos que se ofrecen.</li>
+    </ul>
+
+    <h2>3. Aspectos ambientales y riesgos (cláusula 6.1)</h2>
+    <table>
+      <tr><th>Aspecto</th><th>Impacto</th><th>Control</th></tr>
+      <tr><td>Educación sobre residuos</td><td>Positivo: mejor separación y aprovechamiento de residuos</td><td>Calculadora, estadísticas personales y contenido informativo</td></tr>
+      <tr><td>Operación del sitio (hosting y CDN en la nube)</td><td>Consumo de energía de la infraestructura</td><td>Sitio estático ligero; el cálculo se hace en el navegador; solo se guardan datos necesarios</td></tr>
+      <tr><td>Datos personales</td><td>Riesgo de privacidad</td><td>Contraseñas con hash, sesión HttpOnly, límite de intentos y <a href="aviso-de-privacidad.html">aviso de privacidad</a></td></tr>
+      <tr><td>Información incorrecta</td><td>Decisiones ambientales equivocadas</td><td>Fórmulas publicadas en la página principal; precios y centros de acopio con aviso de confirmar</td></tr>
+    </table>
+
+    <h2>4. Requisitos legales (cláusula 6.1.3)</h2>
+    <p>El proyecto toma como referencia la Ley General para la Prevención y Gestión Integral de los Residuos (LGPGIR) y la normativa de protección de datos personales aplicable, además de las disposiciones estatales y municipales sobre residuos. Esta lista debe revisarse con asesoría legal antes de cualquier certificación.</p>
+
+    <h2>5. Objetivos e indicadores (cláusulas 6.2 y 9.1)</h2>
+    <p>Cada persona registrada puede consultar sus indicadores en <a href="cuenta.html">Mi cuenta</a>:</p>
+    <ul>
+      <li><strong>Total de residuos registrados (kg)</strong> y su variación contra el mes anterior.</li>
+      <li><strong>Tasa de reciclaje</strong> = reciclable ÷ total × 100.</li>
+      <li><strong>Composta disponible (kg)</strong> de materia orgánica.</li>
+      <li><strong>Evolución mensual</strong> por tipo de residuo.</li>
+    </ul>
+    <p>Objetivo general: que quienes usan el sitio aumenten su tasa de reciclaje y aprovechen su materia orgánica. Las metas numéricas deben definirlas los responsables del proyecto a partir de datos reales.</p>
+
+    <h2>6. Roles y responsabilidades (cláusula 5.3)</h2>
+    <p>La responsabilidad recae en las personas autoras: Aldebarán de Jesús Rojas Turrent, Saúl Adrián Toto Santos y Dylan Hernández Noguerola, con la supervisión académica del instituto.</p>
+
+    <h2>7. Información documentada (cláusula 7.5)</h2>
+    <ul>
+      <li>Documentación y presentación del proyecto (carpeta <code>docs/</code> del repositorio).</li>
+      <li>Historial de cambios en el <a href="https://github.com/AldeCraft/EcoEstadistica-website">repositorio de GitHub</a>.</li>
+      <li>Registros de residuos de cada cuenta, descargables en CSV, JSON y TXT.</li>
+    </ul>
+
+    <h2>8. Mejora continua (cláusulas 9 y 10)</h2>
+    <p>El proyecto sigue el ciclo Planificar–Hacer–Verificar–Actuar: se definen objetivos e indicadores, se opera el sitio, se revisan los datos y comentarios de la comunidad, y se corrigen o mejoran contenidos y funciones. Se recomienda una revisión de esta página al menos una vez al año.</p>
+
+    <h2>9. Qué falta para una certificación</h2>
+    <ul>
+      <li>Definir metas numéricas y responsables con la dirección u organización que respalde el proyecto.</li>
+      <li>Realizar auditoría interna y revisión por la dirección.</li>
+      <li>Contratar una auditoría de certificación con un organismo acreditado.</li>
+    </ul>
+  </div>
+
+  <!-- ======================= ENGLISH ======================= -->
+  <div lang="en" id="c-en" hidden>
+    <h1>EcoStatistics environmental management</h1>
+    <p class="updated">Aligned with the principles of ISO 14001:2015 · Reviewed: November 21, 2026</p>
+
+    <div class="notice">
+      <strong>Important notice.</strong> ISO 14001 is a standard for an <em>organization's environmental management system</em> and can only be certified by an accredited certification body (in Mexico, accredited by ema). <strong>EcoStatistics is not ISO 14001 certified.</strong> This page documents how the project voluntarily applies its requirements for educational purposes and serves as a base if certification is pursued in the future.
+    </div>
+
+    <h2>1. Context and scope (clauses 4.1 – 4.3)</h2>
+    <p>EcoStatistics is an academic Computer Systems Engineering project of the Instituto Tecnológico Superior de San Andrés Tuxtla. Its scope covers the website, the desktop application and the accounts and waste-log database, plus the educational activity they promote. Interested parties are users, the institute, the Tebaev Caleria center, and the applicable environmental and data-protection authorities.</p>
+
+    <h2>2. Environmental policy (clause 5.2)</h2>
+    <ul>
+      <li>Encourage waste separation, recycling and composting through clear, measurable information.</li>
+      <li>Comply with applicable environmental legislation and any other requirements the project subscribes to.</li>
+      <li>Reduce the site's own environmental impact: lightweight resources, no unnecessary data and no services that do not serve the goal.</li>
+      <li>Continually improve environmental performance and the quality of the data offered.</li>
+    </ul>
+
+    <h2>3. Environmental aspects and risks (clause 6.1)</h2>
+    <table>
+      <tr><th>Aspect</th><th>Impact</th><th>Control</th></tr>
+      <tr><td>Waste education</td><td>Positive: better separation and use of waste</td><td>Calculator, personal statistics and informative content</td></tr>
+      <tr><td>Site operation (cloud hosting and CDN)</td><td>Energy use of the infrastructure</td><td>Lightweight static site; calculations run in the browser; only necessary data is stored</td></tr>
+      <tr><td>Personal data</td><td>Privacy risk</td><td>Hashed passwords, HttpOnly session, attempt limits and the <a href="aviso-de-privacidad.html">privacy notice</a></td></tr>
+      <tr><td>Incorrect information</td><td>Wrong environmental decisions</td><td>Formulas published on the home page; prices and collection centers carry a notice to confirm</td></tr>
+    </table>
+
+    <h2>4. Legal requirements (clause 6.1.3)</h2>
+    <p>The project uses as reference Mexico's General Law for the Prevention and Comprehensive Management of Waste (LGPGIR) and applicable personal-data protection rules, plus state and municipal waste provisions. This list should be reviewed with legal advice before any certification.</p>
+
+    <h2>5. Objectives and indicators (clauses 6.2 and 9.1)</h2>
+    <p>Each registered user can view their indicators in <a href="cuenta.html">My account</a>:</p>
+    <ul>
+      <li><strong>Total waste recorded (kg)</strong> and its change versus the previous month.</li>
+      <li><strong>Recycling rate</strong> = recyclable ÷ total × 100.</li>
+      <li><strong>Compost available (kg)</strong> of organic matter.</li>
+      <li><strong>Monthly trend</strong> by waste type.</li>
+    </ul>
+    <p>General objective: that people using the site increase their recycling rate and make use of their organic matter. Numeric targets must be set by the project's owners based on real data.</p>
+
+    <h2>6. Roles and responsibilities (clause 5.3)</h2>
+    <p>Responsibility lies with the authors: Aldebarán de Jesús Rojas Turrent, Saúl Adrián Toto Santos and Dylan Hernández Noguerola, under the institute's academic supervision.</p>
+
+    <h2>7. Documented information (clause 7.5)</h2>
+    <ul>
+      <li>Project documentation and presentation (<code>docs/</code> folder in the repository).</li>
+      <li>Change history in the <a href="https://github.com/AldeCraft/EcoEstadistica-website">GitHub repository</a>.</li>
+      <li>Each account's waste records, downloadable as CSV, JSON and TXT.</li>
+    </ul>
+
+    <h2>8. Continual improvement (clauses 9 and 10)</h2>
+    <p>The project follows the Plan–Do–Check–Act cycle: objectives and indicators are defined, the site is operated, data and community feedback are reviewed, and content and features are fixed or improved. This page should be reviewed at least once a year.</p>
+
+    <h2>9. What is missing for certification</h2>
+    <ul>
+      <li>Define numeric targets and owners with the management or organization backing the project.</li>
+      <li>Carry out an internal audit and a management review.</li>
+      <li>Hire a certification audit from an accredited body.</li>
+    </ul>
+  </div>
+</main>
+<script>
+(() => {
+  const set = (l) => {
+    document.documentElement.lang = l;
+    document.getElementById('c-es').hidden = l !== 'es';
+    document.getElementById('c-en').hidden = l !== 'en';
+    document.querySelectorAll('.t-es').forEach((n) => { n.hidden = l !== 'es'; });
+    document.querySelectorAll('.t-en').forEach((n) => { n.hidden = l !== 'en'; });
+    document.querySelectorAll('.lang-switch button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.l === l)));
+    try { localStorage.setItem('ecoestadistica-lang', l); } catch (_) {}
+  };
+  document.querySelectorAll('.lang-switch button').forEach((b) => b.addEventListener('click', () => set(b.dataset.l)));
+  let l = 'es'; try { l = localStorage.getItem('ecoestadistica-lang') === 'en' ? 'en' : 'es'; } catch (_) {}
+  set(l);
+  try { if (localStorage.getItem('ecoestadistica-theme') === 'dark') document.body.classList.add('dark-mode'); } catch (_) {}
+})();
+</script>
+</body>
+</html>

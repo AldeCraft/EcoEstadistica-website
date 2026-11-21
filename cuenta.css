@@ -1,0 +1,37 @@
+/* Área privada "Mi cuenta" */
+.acc-main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 4rem}
+.acc-top{background:var(--dark);color:#fff}
+.acc-top .nav{padding:1rem 1.2rem}
+.acc-page h1{color:var(--dark);margin:0 0 .3rem}
+.acc-page h2{color:var(--dark);margin:0 0 .8rem;font-size:1.25rem}
+.acc-page h3{color:var(--dark);margin:1.6rem 0 .3rem}
+.acc-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:1.3rem 1.4rem;margin:1.4rem 0}
+.gate{max-width:420px;margin:3rem auto}
+.gate input,.filters input,.inline-form input,#delForm input{width:100%;padding:.7rem .9rem;border:1px solid var(--line);border-radius:12px;background:var(--white);color:var(--text);font:inherit;box-sizing:border-box}
+.gate label,#delForm label{display:block;margin:.8rem 0 .3rem;font-weight:600}
+.muted{color:var(--muted)}
+.msg{min-height:1.2em;margin:.4rem 0;font-size:.92rem;color:var(--muted)}
+.msg.err{color:#d64545}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem}
+.kpi{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:1rem 1.1rem}
+.kpi span{display:block;color:var(--muted);font-size:.88rem}
+.kpi strong{display:block;font-size:1.55rem;color:var(--green);margin:.15rem 0}
+.kpi small{color:var(--muted)}
+.chart-box{position:relative;height:300px}
+.filters{display:flex;flex-wrap:wrap;gap:.8rem;align-items:flex-end}
+.filters label{display:flex;flex-direction:column;gap:.25rem;font-weight:600;font-size:.9rem}
+.filters .button,.dl-actions .button,.pager .button{width:auto}
+.pager{display:flex;gap:1rem;align-items:center;justify-content:center;margin:1rem 0}
+.dl-actions{display:flex;flex-wrap:wrap;gap:.6rem}
+.inline-form{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.inline-form input{max-width:260px}
+.inline-form .button{width:auto}
+details.danger{border:1px solid #d64545;border-radius:14px;padding:.8rem 1rem;margin:1.2rem 0}
+details.danger summary{cursor:pointer;font-weight:700;color:#d64545}
+.danger-btn{background:#d64545;color:#fff;border:0;border-radius:999px;padding:.8rem 1.4rem;font:inherit;font-weight:700;cursor:pointer}
+.acc-page button:focus-visible,.acc-page input:focus-visible,.acc-page summary:focus-visible{outline:3px solid var(--green2);outline-offset:2px}
+@media print{
+  .acc-top,footer,.filters,.pager,.dl-actions,#nameForm,details.danger,#hProf,#hProf~*,.theme-toggle,#logoutBtn,h3,.muted[data-i18n="dl.hint"]{display:none!important}
+  .acc-card{border:0;padding:0;break-inside:avoid}
+  body{background:#fff!important;color:#000!important}
+}
