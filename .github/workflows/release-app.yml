@@ -2,6 +2,7 @@ name: Release app (Tauri)
 on:
   push:
     tags: ['v*']
+    branches: [feature/tauri-app]   # temporal: para probar antes de fusionar; quítalo después
   workflow_dispatch:
 
 permissions:
@@ -17,6 +18,8 @@ jobs:
             name: windows
           - os: ubuntu-22.04
             name: linux
+          - os: macos-latest
+            name: macos
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -41,7 +44,7 @@ jobs:
           projectPath: app
           tagName: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || '' }}
           releaseName: 'EcoEstadística ${{ github.ref_name }}'
-          releaseDraft: true
+          releaseDraft: false
       - uses: actions/upload-artifact@v4
         with:
           name: EcoEstadistica-${{ matrix.name }}
@@ -51,8 +54,11 @@ jobs:
             app/src-tauri/target/release/bundle/deb/*.deb
             app/src-tauri/target/release/bundle/rpm/*.rpm
             app/src-tauri/target/release/bundle/appimage/*.AppImage
+            app/src-tauri/target/release/bundle/dmg/*.dmg
 
   android:
+    needs: desktop
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
@@ -64,9 +70,11 @@ jobs:
           distribution: temurin
           java-version: 17
       - uses: android-actions/setup-android@v3
-      - name: NDK
+        with:
+          packages: ''          # evita el paquete "tools", que ya no existe
+      - name: Componentes del SDK y NDK
         run: |
-          sdkmanager "ndk;27.0.12077973"
+          sdkmanager "platform-tools" "ndk;27.0.12077973"
           echo "NDK_HOME=$ANDROID_HOME/ndk/27.0.12077973" >> "$GITHUB_ENV"
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -91,5 +99,5 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          draft: true
+          draft: false
           files: app/src-tauri/gen/android/app/build/outputs/apk/**/*.apk

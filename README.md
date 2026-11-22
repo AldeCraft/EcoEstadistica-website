@@ -64,6 +64,7 @@ La cantidad de orgánica registrada se muestra como material disponible para el 
 > 3.0.0
 - Se refactorizó la aplicación de **Windows** y **Linux** (Con Rust + Tauri 2.0)
 - Se creó la aplicación para **Android** (Gracias a la refactorización)
+- Se creó la aplicación para **MacOS** (Gracias a la refactorización)
 
 # Notas
 - La gráfica utiliza Chart.js desde CDN, por lo que necesita conexión a Internet para cargar la librería. El resto de la página funciona como archivos HTML/CSS/JS normales.
