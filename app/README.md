@@ -34,6 +34,15 @@ Un APK de release **debe firmarse** para instalarse: crea un keystore, configura
 y el bloque `signingConfigs` en `app/build.gradle.kts` (guía: https://v2.tauri.app/distribute/sign/android/).
 Para pruebas usa `npx tauri android build --apk --debug`, que ya sale firmado con la clave de debug.
 
+## Android: proyecto, ícono y comportamiento
+- `src-tauri/gen/android` **está en el repositorio** a propósito: contiene el ícono, el fondo del ícono y `MainActivity.kt` personalizados.
+  El CI solo ejecuta `tauri android init` si esa carpeta no existe.
+- Ícono: es el de la página (`favicon.png`) sobre un fondo con degradado `135deg, #020302 → #0c1c12`.
+  El fondo está en `res/drawable/ic_launcher_background.xml` y el primer plano en `res/mipmap-*/ic_launcher_foreground.png`.
+  **No ejecutes `npx tauri icon`** sin revisar después estos archivos: con `gen/android` presente, ese comando sobrescribe los íconos de Android.
+- `MainActivity.kt` oculta la barra de botones del sistema (reaparece al deslizar desde abajo) y activa el zoom con dos dedos.
+- La escala inicial de la página en Android es `ANDROID_INITIAL_SCALE` en `src-tauri/src/lib.rs` (`"0.8"`; sube el valor para ver todo más grande).
+
 ## Cómo funciona
 - `src-tauri/src/lib.rs`: al arrancar comprueba (en otro hilo) si el servidor responde; si sí abre el sitio en línea y si no, la copia local.
   Menú de escritorio (Archivo, Ver, Ayuda), una sola instancia, zoom y pantalla completa.

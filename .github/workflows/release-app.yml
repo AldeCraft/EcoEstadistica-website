@@ -21,8 +21,8 @@ jobs:
             name: macos
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
       - uses: dtolnay/rust-toolchain@stable
@@ -44,7 +44,7 @@ jobs:
           tagName: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || '' }}
           releaseName: 'EcoEstadística ${{ github.ref_name }}'
           releaseDraft: false
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: EcoEstadistica-${{ matrix.name }}
           path: |
@@ -60,11 +60,11 @@ jobs:
     if: ${{ !cancelled() }}
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 17
@@ -87,10 +87,12 @@ jobs:
         working-directory: app
         run: |
           if [ ! -d src-tauri/gen/android ]; then npx tauri android init --ci; fi
+      - name: Permiso de ejecución de gradlew
+        run: chmod +x app/src-tauri/gen/android/gradlew
       - name: Compilar APK (depuración, firmado con la clave de debug)
         working-directory: app
         run: npx tauri android build --apk --debug --ci
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: EcoEstadistica-android-apk
           path: app/src-tauri/gen/android/app/build/outputs/apk/**/*.apk

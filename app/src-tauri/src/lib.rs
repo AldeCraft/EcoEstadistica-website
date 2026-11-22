@@ -19,9 +19,13 @@ const SITE_HOST: &str = "ecoestadistica.alderojasturrent.workers.dev";
 #[cfg(desktop)]
 const REPO_URL: &str = "https://github.com/AldeCraft/EcoEstadistica-website";
 const TITLE: &str = "EcoEstadística";
+/// Escala inicial en Android (1.0 = tamaño normal). Más bajo = la página se ve más pequeña.
+/// Con dos dedos se puede acercar o alejar a partir de este valor.
+const ANDROID_INITIAL_SCALE: &str = "0.8";
 
 /// Se inyecta en todas las páginas de la ventana.
 /// - En la copia local, `/api/*` responde "offline" (igual que hacía la versión de Electron).
+/// - En Android fija la escala inicial de la página y permite el zoom con dos dedos.
 /// - Los enlaces `target=_blank` y `window.open` navegan en la misma ventana para que Rust decida
 ///   si se abren en el navegador del sistema (así el sitio remoto no necesita acceso a IPC).
 const SHIM: &str = r#"
@@ -39,6 +43,15 @@ const SHIM: &str = r#"
       }
       return realFetch(input, init);
     };
+  }
+  if (/Android/i.test(navigator.userAgent)) {
+    var applyViewport = function () {
+      var m = document.querySelector('meta[name="viewport"]');
+      if (!m) { m = document.createElement('meta'); m.name = 'viewport'; (document.head || document.documentElement).appendChild(m); }
+      m.setAttribute('content', 'width=device-width, initial-scale=__SCALE__, minimum-scale=0.5, maximum-scale=5, user-scalable=yes');
+    };
+    if (document.head) { applyViewport(); }
+    document.addEventListener('DOMContentLoaded', applyViewport);
   }
   document.addEventListener('click', function (e) {
     var a = e.target && e.target.closest ? e.target.closest('a[target="_blank"]') : null;
@@ -113,7 +126,7 @@ fn create_window(app: &AppHandle, online: bool) -> tauri::Result<()> {
     let nav = app.clone();
     let builder = WebviewWindowBuilder::new(app, "main", url)
         .title(TITLE)
-        .initialization_script(SHIM)
+        .initialization_script(SHIM.replace("__SCALE__", ANDROID_INITIAL_SCALE))
         .on_navigation(move |u| allow_navigation(&nav, u));
     #[cfg(desktop)]
     let builder = builder.inner_size(1280.0, 820.0).min_inner_size(380.0, 600.0);
