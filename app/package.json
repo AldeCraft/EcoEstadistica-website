@@ -1,0 +1,25 @@
+{
+  "name": "ecoestadistica-app",
+  "version": "3.0.0",
+  "private": true,
+  "description": "EcoEstadística: aplicación para Windows, Linux y Android con Tauri 2 (Rust)",
+  "author": "Aldebarán de Jesús Rojas Turrent",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/AldeCraft/EcoEstadistica-website",
+  "scripts": {
+    "sync": "node scripts/sync-web.js",
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "android:init": "tauri android init",
+    "android:dev": "tauri android dev",
+    "android:build": "tauri android build"
+  },
+  "dependencies": {
+    "chart.js": "4.4.0",
+    "leaflet": "1.9.4"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2"
+  }
+}

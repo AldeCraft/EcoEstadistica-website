@@ -1,0 +1,6 @@
+{
+  "identifier": "default",
+  "description": "Sin permisos de IPC: la ventana solo muestra el sitio. Las acciones nativas (menú, abrir enlaces) se hacen desde Rust.",
+  "windows": ["main"],
+  "permissions": []
+}

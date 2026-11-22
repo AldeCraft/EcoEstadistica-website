@@ -46,7 +46,7 @@ La cantidad de orgánica registrada se muestra como material disponible para el 
 - Cuenta + Comentarios
 
 > 2.5.0
-- Aplicación Cliente (**Windows**, **Linux**)
+- Aplicación Cliente (**Windows**, **Linux**) usando Electron
 - Se agregó **"Avisos de Privacidad"**
 - Se agregó un apartado para ver los archivos (**"Documentación"**, **"Presentación"**)
 
@@ -60,6 +60,10 @@ La cantidad de orgánica registrada se muestra como material disponible para el 
 - Área privada **"Mi cuenta"** (`cuenta.html`): indicadores, gráfica mensual, filtros por fecha y descarga de registros (CSV, JSON, TXT, PDF por impresión)
 - Perfil: cambiar nombre público y eliminar la cuenta con todos sus datos
 - Página de **Gestión ambiental** alineada a ISO 14001 (`gestion-ambiental.html`). *No es una certificación.*
+
+> 3.0.0
+- Se refactorizó la aplicación de **Windows** y **Linux** (Con Rust + Tauri 2.0)
+- Se creó la aplicación para **Android** (Gracias a la refactorización)
 
 # Notas
 - La gráfica utiliza Chart.js desde CDN, por lo que necesita conexión a Internet para cargar la librería. El resto de la página funciona como archivos HTML/CSS/JS normales.
@@ -78,7 +82,7 @@ La cantidad de orgánica registrada se muestra como material disponible para el 
 4. Modifica el precio del PET si quieres estimar una venta diferente.
 
 <!-- > La base de datos (El Mapa, Cuenta y comentarios) no se pueden usar en local de manera convencional. -->
-> La base de datos (Cuenta y comentarios) no se pueden usar en local de manera convencional.
+<!-- > La base de datos (Cuenta y comentarios) no se pueden usar en local de manera convencional. -->
 
 # Creditos
 - **Aldebarán de Jesús Rojas Turrent.**

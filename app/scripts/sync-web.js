@@ -1,4 +1,4 @@
-// Copia el sitio (carpeta padre) a desktop/web para la versión SIN CONEXIÓN de la app.
+// Copia el sitio (carpeta padre) a app/web para la versión SIN CONEXIÓN de la app.
 // Chart.js y Leaflet se empaquetan desde npm y se reescriben las rutas del CDN en la copia.
 const fs = require('fs');
 const path = require('path');
@@ -10,7 +10,7 @@ const nm = path.join(__dirname, '..', 'node_modules');
 fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(path.join(out, 'vendor'), { recursive: true });
 
-for (const f of ['index.html', 'aviso-de-privacidad.html', 'style.css', 'extras.css', 'script.js', 'extras.js', 'favicon.png']) {
+for (const f of ['index.html', 'aviso-de-privacidad.html', 'gestion-ambiental.html', 'style.css', 'extras.css', 'script.js', 'extras.js', 'favicon.png']) {
   fs.copyFileSync(path.join(root, f), path.join(out, f));
 }
 fs.cpSync(path.join(root, 'data'), path.join(out, 'data'), { recursive: true });
