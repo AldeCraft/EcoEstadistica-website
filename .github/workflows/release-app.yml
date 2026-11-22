@@ -2,7 +2,6 @@ name: Release app (Tauri)
 on:
   push:
     tags: ['v*']
-    branches: [feature/tauri-app]   # temporal: para probar antes de fusionar; quítalo después
   workflow_dispatch:
 
 permissions:
