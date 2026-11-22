@@ -89,20 +89,23 @@ jobs:
           if [ ! -d src-tauri/gen/android ]; then npx tauri android init --ci; fi
       - name: Permiso de ejecución de gradlew
         run: chmod +x app/src-tauri/gen/android/gradlew
-      - name: Compilar APK (depuración, firmado con la clave de debug)
+      - name: Compilar un APK por arquitectura (depuración)
         working-directory: app
-        run: npx tauri android build --apk --debug --ci
-      - uses: actions/upload-artifact@v7
-        with:
-          name: EcoEstadistica-android-apk
-          path: app/src-tauri/gen/android/app/build/outputs/apk/**/*.apk
-      - name: Adjuntar APK al release
-        if: startsWith(github.ref, 'refs/tags/')
-        env:
-          GH_TOKEN: ${{ github.token }}
+        run: npx tauri android build --apk --debug --split-per-abi --ci
+      - name: Reunir los APK con nombres claros
         run: |
           mkdir -p release-apk
           for f in $(find app/src-tauri/gen/android/app/build/outputs/apk -name '*.apk'); do
-            cp "$f" "release-apk/EcoEstadistica_${GITHUB_REF_NAME}_$(basename "$f")"
+            arch=$(basename "$(dirname "$(dirname "$f")")")
+            cp "$f" "release-apk/EcoEstadistica_${GITHUB_REF_NAME}_android_${arch}.apk"
           done
-          gh release upload "$GITHUB_REF_NAME" release-apk/*.apk --clobber --repo "$GITHUB_REPOSITORY"
+          ls -l release-apk
+      - uses: actions/upload-artifact@v7
+        with:
+          name: EcoEstadistica-android-apks
+          path: release-apk/*.apk
+      - name: Adjuntar los APK al release
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "$GITHUB_REF_NAME" release-apk/*.apk --clobber --repo "$GITHUB_REPOSITORY"
