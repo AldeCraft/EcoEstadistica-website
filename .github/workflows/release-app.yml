@@ -98,7 +98,11 @@ jobs:
           path: app/src-tauri/gen/android/app/build/outputs/apk/**/*.apk
       - name: Adjuntar APK al release
         if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v2
-        with:
-          draft: false
-          files: app/src-tauri/gen/android/app/build/outputs/apk/**/*.apk
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p release-apk
+          for f in $(find app/src-tauri/gen/android/app/build/outputs/apk -name '*.apk'); do
+            cp "$f" "release-apk/EcoEstadistica_${GITHUB_REF_NAME}_$(basename "$f")"
+          done
+          gh release upload "$GITHUB_REF_NAME" release-apk/*.apk --clobber --repo "$GITHUB_REPOSITORY"
