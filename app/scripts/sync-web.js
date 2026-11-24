@@ -25,6 +25,17 @@ fs.copyFileSync(path.join(nm, 'leaflet', 'dist', 'leaflet.js'), path.join(out, '
 fs.copyFileSync(path.join(nm, 'leaflet', 'dist', 'leaflet.css'), path.join(out, 'vendor', 'leaflet.css'));
 fs.cpSync(path.join(nm, 'leaflet', 'dist', 'images'), path.join(out, 'vendor', 'images'), { recursive: true });
 
+// Visor de PDF y barra de título propia (carpeta shell/) + pdf.js (compilación "legacy" para WebViews antiguos).
+const shell = path.join(__dirname, '..', 'shell');
+for (const f of fs.readdirSync(shell)) fs.copyFileSync(path.join(shell, f), path.join(out, f));
+const pdfjs = path.join(nm, 'pdfjs-dist');
+const pj = path.join(out, 'vendor', 'pdfjs');
+fs.mkdirSync(pj, { recursive: true });
+for (const f of ['pdf.min.mjs', 'pdf.worker.min.mjs']) fs.copyFileSync(path.join(pdfjs, 'legacy', 'build', f), path.join(pj, f));
+fs.cpSync(path.join(pdfjs, 'standard_fonts'), path.join(pj, 'standard_fonts'), { recursive: true });
+fs.cpSync(path.join(pdfjs, 'wasm'), path.join(pj, 'wasm'), { recursive: true });
+fs.copyFileSync(path.join(pdfjs, 'LICENSE'), path.join(pj, 'LICENSE'));
+
 const idx = path.join(out, 'index.html');
 let html = fs.readFileSync(idx, 'utf8');
 const before = html;

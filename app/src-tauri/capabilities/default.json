@@ -1,6 +1,16 @@
 {
   "identifier": "default",
-  "description": "Sin permisos de IPC: la ventana solo muestra el sitio. Las acciones nativas (menú, abrir enlaces) se hacen desde Rust.",
-  "windows": ["main"],
-  "permissions": []
+  "description": "Contenido (sitio en línea y copia local). Solo puede guardar archivos con el cuadro 'Guardar como' del sistema.",
+  "webviews": [
+    "content",
+    "main"
+  ],
+  "remote": {
+    "urls": [
+      "https://ecoestadistica.alderojasturrent.workers.dev/*"
+    ]
+  },
+  "permissions": [
+    "allow-save-file"
+  ]
 }

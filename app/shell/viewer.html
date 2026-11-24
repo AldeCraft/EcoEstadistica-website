@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visor de PDF | EcoEstadística</title>
+  <meta name="robots" content="noindex">
+  <style>
+    :root { color-scheme: dark; --bar: linear-gradient(135deg, #020302, #0c1c12); }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #151917; color: #e6efe9; font-family: system-ui, "Segoe UI", Roboto, sans-serif; }
+    header { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: .5rem; padding: .5rem .75rem;
+             background: var(--bar); border-bottom: 1px solid rgba(255,255,255,.08); }
+    header h1 { flex: 1; margin: 0; font-size: .95rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    button { font: inherit; color: inherit; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+             border-radius: 999px; padding: .4rem .85rem; cursor: pointer; }
+    button:hover { background: rgba(255,255,255,.16); }
+    button:focus-visible { outline: 3px solid #2e9d67; outline-offset: 2px; }
+    button.icon { width: 2.1rem; padding: .4rem 0; }
+    #zoomLabel { min-width: 3.2rem; text-align: center; font-size: .85rem; color: #b9c9bf; }
+    #status { padding: 2rem 1rem; text-align: center; color: #b9c9bf; }
+    #pages { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 12px 0 28px; overflow-x: auto; }
+    .page { background: #fff; box-shadow: 0 2px 14px rgba(0,0,0,.45); flex: none; }
+    .page canvas { display: block; }
+    @media (max-width: 560px) { #dl span, #back span { display: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <button id="back" type="button" aria-label="Volver">←<span id="tBack"> Volver</span></button>
+    <h1 id="title">PDF</h1>
+    <button class="icon" id="zOut" type="button" aria-label="Alejar">−</button>
+    <span id="zoomLabel">100%</span>
+    <button class="icon" id="zIn" type="button" aria-label="Acercar">+</button>
+    <button id="dl" type="button" aria-label="Descargar">⬇<span id="tDl"> Descargar</span></button>
+  </header>
+  <p id="status" role="status">Cargando…</p>
+  <main id="pages"></main>
+  <script type="module" src="viewer.js"></script>
+</body>
+</html>

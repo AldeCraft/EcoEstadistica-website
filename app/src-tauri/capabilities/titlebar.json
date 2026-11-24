@@ -1,0 +1,15 @@
+{
+  "identifier": "titlebar",
+  "description": "Barra de título propia: minimizar, maximizar, cerrar, arrastrar y abrir el menú. Solo páginas locales.",
+  "webviews": [
+    "titlebar"
+  ],
+  "permissions": [
+    "core:window:allow-minimize",
+    "core:window:allow-toggle-maximize",
+    "core:window:allow-close",
+    "core:window:allow-is-maximized",
+    "core:window:allow-start-dragging",
+    "allow-show-menu"
+  ]
+}

@@ -43,6 +43,26 @@ Para pruebas usa `npx tauri android build --apk --debug`, que ya sale firmado co
 - `MainActivity.kt` oculta la barra de botones del sistema (reaparece al deslizar desde abajo) y activa el zoom con dos dedos.
 - La escala inicial de la página en Android es `ANDROID_INITIAL_SCALE` en `src-tauri/src/lib.rs` (`"0.8"`; sube el valor para ver todo más grande).
 
+## Visor de PDF, descargas e impresión
+- **PDF:** al tocar Documentación o Presentación (en el sitio, en la copia local o en el menú Ayuda) se abre `viewer.html`, un visor
+  con pdf.js incluido en la app (zoom, descargar, volver). Solo abre archivos de `docs/`.
+- **Descargas** (`<a download>` con blob:, como los CSV/JSON/TXT de "Mi cuenta"): el script que la app inyecta las intercepta.
+  En escritorio llama al comando `save_file` (cuadro "Guardar como" del sistema) y en Android al puente `EcoNative` de `MainActivity.kt`
+  (guarda en Descargas con MediaStore). El permiso `allow-save-file` está concedido al sitio en línea y a la copia local (`capabilities/default.json`).
+- **Imprimir / PDF** en Android: `window.print()` se redirige a `EcoNative.print()` (impresión nativa, permite guardar como PDF).
+- **Android:** `MainActivity.kt` deja un margen para la barra de estado/cámara y el teclado.
+
+## Marco de ventana (escritorio)
+- **Windows:** ventana sin marco con barra de título propia (`shell/titlebar.html`) y botón ☰ para el menú. Se arrastra desde la barra y
+  el borde permite redimensionar. Si diera problemas, se vuelve al marco nativo con la variable de entorno `ECO_MARCO_NATIVO=1`.
+- **Linux y macOS:** marco nativo con tema oscuro y barra de menús (Tauri aún no posiciona varios webviews en Linux).
+- Los archivos de `shell/` (visor y barra de título) se copian a `web/` junto con pdf.js en `scripts/sync-web.js`.
+
+## Descripción de los releases
+El job `notes` de `.github/workflows/release-app.yml` escribe la descripción al terminar los instaladores:
+usa `release-notes/<tag>.md` si existe (por ejemplo `release-notes/v3.1.0.md`) y, si no, las notas automáticas de GitHub.
+También puedes editarla a mano en Releases → lápiz de edición.
+
 ## Cómo funciona
 - `src-tauri/src/lib.rs`: al arrancar comprueba (en otro hilo) si el servidor responde; si sí abre el sitio en línea y si no, la copia local.
   Menú de escritorio (Archivo, Ver, Ayuda), una sola instancia, zoom y pantalla completa.

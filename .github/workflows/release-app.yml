@@ -109,3 +109,25 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh release upload "$GITHUB_REF_NAME" release-apk/*.apk --clobber --repo "$GITHUB_REPOSITORY"
+  # Escribe la descripción del release cuando ya terminaron los instaladores.
+  # 1) Si existe release-notes/<tag>.md (por ejemplo release-notes/v3.1.0.md), usa ese texto.
+  # 2) Si no existe, GitHub genera las notas automáticamente a partir de los commits desde el tag anterior.
+  notes:
+    needs: [desktop, android]
+    if: ${{ always() && startsWith(github.ref, 'refs/tags/') }}
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v6
+      - name: Descripción del release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          if [ -f "release-notes/${TAG}.md" ]; then
+            cp "release-notes/${TAG}.md" notes.md
+          else
+            gh api -X POST "repos/${GITHUB_REPOSITORY}/releases/generate-notes" -f tag_name="${TAG}" --jq .body > notes.md
+          fi
+          id=$(gh api "repos/${GITHUB_REPOSITORY}/releases" --paginate --jq ".[] | select(.tag_name==\"${TAG}\") | .id" | head -1)
+          if [ -z "$id" ]; then echo "No se encontró el release de ${TAG}"; exit 1; fi
+          gh api -X PATCH "repos/${GITHUB_REPOSITORY}/releases/${id}" -F body=@notes.md

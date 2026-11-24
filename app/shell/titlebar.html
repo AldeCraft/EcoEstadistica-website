@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoEstadística</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; overflow: hidden; user-select: none; -webkit-user-select: none; cursor: default;
+                 background: linear-gradient(135deg, #020302, #0c1c12); color: #dfeae3;
+                 font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif; }
+    .bar { height: 100%; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,.09); }
+    .menu, .win button { border: 0; background: transparent; color: inherit; height: 100%; display: grid; place-items: center; cursor: default; }
+    .menu { width: 44px; }
+    .menu svg { width: 16px; height: 16px; }
+    .brand { display: flex; align-items: center; gap: 9px; padding: 0 6px; font-size: 12.5px; font-weight: 600; letter-spacing: .2px; pointer-events: none; }
+    .brand img { width: 17px; height: 17px; }
+    .drag { flex: 1; height: 100%; }
+    .win { display: flex; height: 100%; }
+    .win button { width: 47px; }
+    .menu:hover, .win button:hover { background: rgba(255,255,255,.1); }
+    .win .close:hover { background: #e5484d; color: #fff; }
+    .win svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1; }
+    button:focus-visible { outline: 2px solid #2e9d67; outline-offset: -2px; }
+  </style>
+</head>
+<body>
+  <div class="bar" id="bar">
+    <button class="menu" id="menu" type="button" aria-label="Menú" title="Menú">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
+    </button>
+    <div class="brand"><img src="favicon.png" alt=""><span>EcoEstadística</span></div>
+    <div class="drag" id="drag"></div>
+    <div class="win">
+      <button id="min" type="button" aria-label="Minimizar" title="Minimizar"><svg viewBox="0 0 10 10"><path d="M0 5.5h10"/></svg></button>
+      <button id="max" type="button" aria-label="Maximizar" title="Maximizar"><svg id="maxIcon" viewBox="0 0 10 10"><rect x=".5" y=".5" width="9" height="9"/></svg></button>
+      <button class="close" id="close" type="button" aria-label="Cerrar" title="Cerrar"><svg viewBox="0 0 10 10"><path d="M0 0l10 10M10 0L0 10"/></svg></button>
+    </div>
+  </div>
+  <script src="titlebar.js"></script>
+</body>
+</html>

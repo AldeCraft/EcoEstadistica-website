@@ -1,6 +1,6 @@
 [package]
 name = "ecoestadistica"
-version = "3.0.0"
+version = "3.1.0"
 description = "EcoEstadística: estadísticas y registro de residuos (Windows, Linux y Android)"
 authors = ["Aldebarán de Jesús Rojas Turrent"]
 edition = "2021"
@@ -15,11 +15,14 @@ crate-type = ["staticlib", "cdylib", "rlib"]
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
-tauri = { version = "2", features = [] }
+# "unstable": ventanas con varios webviews (barra de título propia en escritorio)
+tauri = { version = "2", features = ["unstable"] }
+base64 = "0.22"
 tauri-plugin-opener = "2"
 
 [target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
 tauri-plugin-single-instance = "2"
+tauri-plugin-dialog = "2"
 
 [profile.release]
 opt-level = "s"
