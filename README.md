@@ -102,6 +102,8 @@ La cantidad de orgánica registrada se muestra como material disponible para el 
 > 3.2.0
 - Al abrir la app, verifica si hay alguna actualización nueva en GitHub
 
+> 3.2.1
+- Prueba de verificador de actualizaciones
 
 # Notas
 - La gráfica utiliza Chart.js desde CDN, por lo que necesita conexión a Internet para cargar la librería. El resto de la página funciona como archivos HTML/CSS/JS normales.
