@@ -15,20 +15,20 @@ Descripción dentro de la web
 
 # DESCARGAR APLICACIÓN CLIENTE
 
-[![Windows](https://img.shields.io/badge/Windows_x64(nsis)-0078D6?logo=windows&logoColor=white&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.1.0/EcoEstadistica_3.1.0_x64-setup.exe)
-[![Windows](https://img.shields.io/badge/Windows_x64(msi)-0078D6?logo=windows&logoColor=white&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.1.0/EcoEstadistica_3.1.0_x64_en-US.msi)
+[![Windows](https://img.shields.io/badge/Windows_x64(nsis)-0078D6?logo=windows&logoColor=white&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.2.0/EcoEstadistica_3.2.0_x64-setup.exe)
+[![Windows](https://img.shields.io/badge/Windows_x64(msi)-0078D6?logo=windows&logoColor=white&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.2.0/EcoEstadistica_3.2.0_x64_en-US.msi)
 
-[![Mac](https://img.shields.io/badge/Mac_AARCH64(DMG)-000000?logo=apple&logoColor=white&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.1.0/EcoEstadistica_3.1.0_aarch64.dmg)
+[![Mac](https://img.shields.io/badge/Mac_AARCH64(DMG)-000000?logo=apple&logoColor=white&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.2.0/EcoEstadistica_3.2.0_aarch64.dmg)
 
-[![Linux](https://img.shields.io/badge/Linux_amd64(AppImage)-FCC624?logo=linux&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.1.0/EcoEstadistica_3.1.0_amd64.AppImage)
-[![Linux](https://img.shields.io/badge/Linux_amd64(DEB)-FCC624?logo=linux&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.1.0/EcoEstadistica_3.1.0_amd64.deb)
-[![Linux](https://img.shields.io/badge/Linux_RED_HAT_x86_64(RPM)-FCC624?logo=RedHat&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.1.0/EcoEstadistica-3.1.0-1.x86_64.rpm)
+[![Linux](https://img.shields.io/badge/Linux_amd64(AppImage)-FCC624?logo=linux&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.2.0/EcoEstadistica_3.2.0_amd64.AppImage)
+[![Linux](https://img.shields.io/badge/Linux_amd64(DEB)-FCC624?logo=linux&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.2.0/EcoEstadistica_3.2.0_amd64.deb)
+[![Linux](https://img.shields.io/badge/Linux_RED_HAT_x86_64(RPM)-FCC624?logo=RedHat&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.2.0/EcoEstadistica-3.2.0-1.x86_64.rpm)
 
-[![Android](https://img.shields.io/badge/Android_ARM64-3DDC84?logo=android&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.1.0/EcoEstadistica_v3.1.0_android_arm64.apk)
-[![Android](https://img.shields.io/badge/Android_ARM-3DDC84?logo=android&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.1.0/EcoEstadistica_v3.1.0_android_arm.apk)
-[![Android](https://img.shields.io/badge/Android_X86-3DDC84?logo=android&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.1.0/EcoEstadistica_v3.1.0_android_x86.apk)
-[![Android](https://img.shields.io/badge/Android_X86_64-3DDC84?logo=android&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.1.0/EcoEstadistica_v3.1.0_android_x86_64.apk)
-[![Android](https://img.shields.io/badge/Android_UNIVERSAL-3DDC84?logo=android&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.1.0/EcoEstadistica_v3.1.0_app-universal-debug.apk)
+[![Android](https://img.shields.io/badge/Android_ARM64-3DDC84?logo=android&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.2.0/EcoEstadistica_v3.2.0_android_arm64.apk)
+[![Android](https://img.shields.io/badge/Android_ARM-3DDC84?logo=android&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.2.0/EcoEstadistica_v3.2.0_android_arm.apk)
+[![Android](https://img.shields.io/badge/Android_X86-3DDC84?logo=android&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.2.0/EcoEstadistica_v3.2.0_android_x86.apk)
+[![Android](https://img.shields.io/badge/Android_X86_64-3DDC84?logo=android&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.2.0/EcoEstadistica_v3.2.0_android_x86_64.apk)
+[![Android](https://img.shields.io/badge/Android_UNIVERSAL-3DDC84?logo=android&logoColor=black&style=for-the-badge)](https://github.com/AldeCraft/EcoEstadistica-website/releases/download/v3.2.0/EcoEstadistica_v3.2.0_app-universal-debug.apk)
 
 
 # DOCUMENTACIÓN
@@ -98,6 +98,10 @@ La cantidad de orgánica registrada se muestra como material disponible para el 
 	- Visualización de PDF's (Se integró una vista integrada de documentos.pdf)
 	- Correción en **Android**, La aplicación solapaba con la cabecera del sistema Android
 - Se añadió un Marco estetíco a la aplicación en **Windows** (En **Linux** y **Mac** se usa el Marco Nativo)
+
+> 3.2.0
+- Al abrir la app, verifica si hay alguna actualización nueva en GitHub
+
 
 # Notas
 - La gráfica utiliza Chart.js desde CDN, por lo que necesita conexión a Internet para cargar la librería. El resto de la página funciona como archivos HTML/CSS/JS normales.

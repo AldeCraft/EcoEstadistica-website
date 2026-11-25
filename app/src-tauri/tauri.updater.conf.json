@@ -1,0 +1,10 @@
+{
+  "bundle": { "createUpdaterArtifacts": true },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEU5NzkyMjUzMTk4MzNFMkMKUldRc1BvTVpVeUo1NmZEWUZ0cFEwV1lIbWN3M0IxMHBKWkN4TDNMWWpEYW82WlE0Q29udjNwSk4K",
+      "endpoints": ["https://github.com/AldeCraft/EcoEstadistica-website/releases/latest/download/latest.json"],
+      "windows": { "installMode": "passive" }
+    }
+  }
+}

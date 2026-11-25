@@ -22,6 +22,7 @@ import java.io.File
 
 class MainActivity : TauriActivity() {
   private var webViewRef: WebView? = null
+  private val updater by lazy { AppUpdater(this) }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     enableEdgeToEdge()
@@ -44,6 +45,14 @@ class MainActivity : TauriActivity() {
     }
 
     hideSystemButtons()
+
+    // Busca una versión nueva en GitHub cada vez que se abre la app.
+    updater.checkOnLaunch()
+  }
+
+  override fun onResume() {
+    super.onResume()
+    updater.resumePending()
   }
 
   // Cada vez que la app recupera el foco (por ejemplo al volver de otra app) se vuelven a ocultar.

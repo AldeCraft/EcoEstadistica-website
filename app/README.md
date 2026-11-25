@@ -63,6 +63,32 @@ El job `notes` de `.github/workflows/release-app.yml` escribe la descripción al
 usa `release-notes/<tag>.md` si existe (por ejemplo `release-notes/v3.1.0.md`) y, si no, las notas automáticas de GitHub.
 También puedes editarla a mano en Releases → lápiz de edición.
 
+## Actualizaciones automáticas
+Al abrir la app con conexión busca una versión nueva y pregunta si quieres instalarla.
+Cada release debe tener un tag `vX.Y.Z`: el CI copia esa versión a `tauri.conf.json`, `package.json` y `Cargo.toml`
+(`scripts/set-version.js`), así la app instalada y el release siempre coinciden.
+
+### Escritorio (Windows, Linux AppImage, macOS)
+Usa el actualizador de Tauri (`latest.json` en el release, firmado). Configuración única:
+1. Genera la clave (guárdala fuera del repositorio; si se pierde, las apps ya instaladas no podrán actualizarse):
+   `cd app && npx tauri signer generate -w C:\Users\TU_USUARIO\.tauri\ecoestadistica.key`
+2. Pega la **clave pública** (el contenido de `ecoestadistica.key.pub`) en `src-tauri/tauri.updater.conf.json`, campo `pubkey`.
+3. En GitHub → Settings → Secrets and variables → Actions, crea `TAURI_SIGNING_PRIVATE_KEY` (contenido de `ecoestadistica.key`)
+   y, si pusiste contraseña, `TAURI_SIGNING_PRIVATE_KEY_PASSWORD`.
+Sin ese secreto el CI compila igual, pero sin actualizaciones. Con instalaciones `.deb`/`.rpm` el aviso abre la página de descargas.
+
+### Android
+No hay actualizador de Tauri para Android: `AppUpdater.kt` consulta el último release de GitHub, descarga el APK de la arquitectura
+del teléfono y abre el instalador del sistema (la primera vez Android pide permitir "instalar apps desconocidas" para EcoEstadística).
+Android solo acepta la actualización si el APK nuevo está firmado **con la misma clave** que el instalado, así que hace falta un keystore fijo:
+1. Crea el keystore una sola vez (`keytool` viene con el JDK / Android Studio):
+   `keytool -genkeypair -v -keystore ecoestadistica.jks -keyalg RSA -keysize 2048 -validity 10000 -alias ecoestadistica`
+2. Conviértelo a texto (PowerShell): `[Convert]::ToBase64String([IO.File]::ReadAllBytes("ecoestadistica.jks")) | Set-Clipboard`
+3. Crea estos secretos en GitHub: `ANDROID_KEYSTORE_BASE64` (lo copiado), `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS` (`ecoestadistica`)
+   y `ANDROID_KEY_PASSWORD` (si es la misma contraseña, puedes omitirlo).
+4. Guarda el `.jks` y las contraseñas en un lugar seguro y **no** los subas al repositorio.
+La primera vez hay que desinstalar la versión anterior (estaba firmada con otra clave); desde ahí las actualizaciones se instalan encima.
+
 ## Cómo funciona
 - `src-tauri/src/lib.rs`: al arrancar comprueba (en otro hilo) si el servidor responde; si sí abre el sitio en línea y si no, la copia local.
   Menú de escritorio (Archivo, Ver, Ayuda), una sola instancia, zoom y pantalla completa.

@@ -395,6 +395,78 @@ async fn save_file(app: AppHandle, name: String, data_base64: String) -> Result<
     Ok(true)
 }
 
+/// Busca una versión nueva en los releases de GitHub (archivo latest.json) y ofrece instalarla.
+/// Solo funciona si la compilación incluye la configuración del actualizador (`tauri.updater.conf.json`);
+/// si no la incluye, el plugin no se registra y la app arranca con normalidad.
+#[cfg(desktop)]
+async fn check_updates(app: AppHandle) {
+    use tauri_plugin_dialog::{DialogExt, MessageDialogButtons, MessageDialogKind};
+    use tauri_plugin_updater::UpdaterExt;
+
+    if let Err(e) = app.plugin(tauri_plugin_updater::Builder::new().build()) {
+        eprintln!("Actualizaciones desactivadas: {e}");
+        return;
+    }
+    let updater = match app.updater() {
+        Ok(u) => u,
+        Err(e) => {
+            eprintln!("Actualizaciones desactivadas: {e}");
+            return;
+        }
+    };
+    let update = match updater.check().await {
+        Ok(Some(u)) => u,
+        Ok(None) => return,
+        Err(e) => {
+            eprintln!("No se pudo buscar actualizaciones: {e}");
+            return;
+        }
+    };
+
+    // En Linux solo el AppImage puede reemplazarse a sí mismo; con .deb/.rpm se abre la página de descargas.
+    let can_self_update = !cfg!(target_os = "linux") || std::env::var_os("APPIMAGE").is_some();
+    let ask = {
+        let app = app.clone();
+        let msg = format!(
+            "Hay una nueva versión de EcoEstadística ({}). Tu versión es la {}.\n\n{}",
+            update.version,
+            update.current_version,
+            if can_self_update { "¿Quieres descargarla e instalarla ahora?" } else { "¿Quieres abrir la página de descargas?" }
+        );
+        tauri::async_runtime::spawn_blocking(move || {
+            app.dialog()
+                .message(msg)
+                .title("Actualización disponible")
+                .kind(MessageDialogKind::Info)
+                .buttons(MessageDialogButtons::OkCancelCustom("Actualizar".into(), "Más tarde".into()))
+                .blocking_show()
+        })
+        .await
+        .unwrap_or(false)
+    };
+    if !ask {
+        return;
+    }
+    if !can_self_update {
+        open_external(&app, &format!("{REPO_URL}/releases/latest"));
+        return;
+    }
+    match update.download_and_install(|_, _| {}, || {}).await {
+        Ok(()) => app.restart(),
+        Err(e) => {
+            let app2 = app.clone();
+            let _ = tauri::async_runtime::spawn_blocking(move || {
+                app2.dialog()
+                    .message(format!("No se pudo instalar la actualización: {e}"))
+                    .title("Actualización")
+                    .kind(MessageDialogKind::Error)
+                    .blocking_show();
+            })
+            .await;
+        }
+    }
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     let builder = tauri::Builder::default().plugin(tauri_plugin_opener::init());
@@ -444,6 +516,12 @@ pub fn run() {
                 if let Err(e) = create_window(&handle, online) {
                     eprintln!("No se pudo crear la ventana: {e}");
                     handle.exit(1);
+                    return;
+                }
+                // Con conexión, busca una versión nueva cada vez que se abre la app (solo escritorio).
+                #[cfg(desktop)]
+                if online {
+                    tauri::async_runtime::spawn(check_updates(handle.clone()));
                 }
             });
             Ok(())
